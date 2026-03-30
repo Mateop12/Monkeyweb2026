@@ -1,0 +1,10 @@
+{
+  "content": "src/content",
+  "media": "public",
+  "public": "public",
+  "configs": [
+    "sitepins/config.json"
+  ],
+  "custom-commit": false,
+  "arrangement": []
+}
