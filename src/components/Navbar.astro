@@ -1,0 +1,28 @@
+---
+// Navbar.astro
+---
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass border-b border-brand-beige/30" aria-label="Navegación Principal">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2 group" aria-label="Ir al inicio">
+      <div class="w-8 h-8 rounded-lg bg-linear-to-br from-brand-turquoise to-brand-petroleum flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300 shadow-[0_0_15px_rgba(11,93,94,0.3)]">
+        <span class="text-white font-heading font-bold text-lg">X</span>
+      </div>
+      <span class="font-heading font-bold text-xl tracking-tight text-brand-petroleum hover:text-brand-turquoise transition-colors">Innovate.</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8" aria-label="Navegación de Escritorio">
+      <a href="/#servicios" class="text-sm font-medium text-brand-black/70 hover:text-brand-petroleum transition-colors">Servicios</a>
+      <a href="/proyectos" class="text-sm font-medium text-brand-black/70 hover:text-brand-petroleum transition-colors">Proyectos</a>
+      <a href="/nosotros" class="text-sm font-medium text-brand-black/70 hover:text-brand-petroleum transition-colors">Nosotros</a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <a href="/contacto" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-brand-petroleum border border-brand-turquoise/30 rounded-full hover:bg-brand-teal hover:shadow-[0_0_20px_rgba(11,93,94,0.3)] transition-all duration-300 ease-out transform hover:-translate-y-0.5">
+        Contáctanos
+      </a>
+      <button class="md:hidden text-brand-black/70 hover:text-brand-petroleum transition-colors" aria-label="Abrir Menú Móvil" aria-expanded="false" aria-controls="mobile-menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>

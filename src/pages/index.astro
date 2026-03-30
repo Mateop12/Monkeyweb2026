@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import HeroReact from '../components/react/Hero.tsx';
+import ServicesReact from '../components/react/Services.tsx';
+import CaseStudies from '../components/CaseStudies.astro';
+import Footer from '../components/Footer.astro';
+
+// Import the CMS mock data directly
+import homeData from '../content/landing/home.json';
+
+---
+
+<Layout title="Innovate - Software Development Agency">
+  <Navbar />
+  
+  <main class="flex flex-col">
+    <!-- Pass CMS data to React components with client:load for animations -->
+    <HeroReact 
+      client:load
+      title={homeData.heroTitle} 
+      subtitle={homeData.heroSubtitle} 
+      ctaText={homeData.ctaText} 
+    />
+    
+    <ServicesReact 
+      client:load
+      services={homeData.services} 
+    />
+    
+    <CaseStudies caseStudies={homeData.caseStudies} />
+  </main>
+
+  <Footer />
+</Layout>

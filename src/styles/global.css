@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand-beige: var(--brand-beige);
+  --color-brand-caramel: var(--brand-caramel);
+  --color-brand-turquoise: var(--brand-turquoise);
+  --color-brand-teal: var(--brand-teal);
+  --color-brand-olive: var(--brand-olive);
+  --color-brand-petroleum: var(--brand-petroleum);
+  --color-brand-brown: var(--brand-brown);
+  --color-brand-black: var(--brand-black);
+
+  --color-bg-main: var(--bg-main);
+  --color-bg-alt: var(--bg-alt);
+}
+
+:root {
+  /* 5. Beige claro / crema: fondos secundarios, tarjetas suaves */
+  --brand-beige: #F1DBB2;
+  /* 6. Café caramelo: detalles cálidos, íconos */
+  --brand-caramel: #CF863E;
+  /* 3. Turquesa profundo: acentos, elementos interactivos */
+  --brand-turquoise: #0B5D5E;
+  /* 2. Verde azulado oscuro: botones, hover */
+  --brand-teal: #034242;
+  /* 4. Verde oliva oscuro: apoyo visual */
+  --brand-olive: #243F22;
+  /* 1. Verde petróleo oscuro: textos, títulos, contrastes fuertes */
+  --brand-petroleum: #062B22;
+  
+  /* 7. Marrón oscuro: sombras, líneas */
+  --brand-brown: #633A10;
+  /* 8. Negro verdoso: texto profundo principal */
+  --brand-black: #111909;
+
+  /* Fondos claros profesionales */
+  --bg-main: #FFFFFF;
+  --bg-alt: #FDFBF7; /* Un tono casi blanco, inspirado en el beige */
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--brand-black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.85); /* Fondo claro con efecto cristal */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(6, 43, 34, 0.05); /* Borde sutil oscuro */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, var(--brand-petroleum), var(--brand-turquoise));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

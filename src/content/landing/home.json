@@ -1,0 +1,47 @@
+{
+  "heroTitle": "Construimos Software que Escala.",
+  "heroSubtitle": "Somos una agencia premier de desarrollo especializada en aplicaciones web full-stack, arquitecturas en la nube, e integración de Inteligencia Artificial profunda. Transformamos tus ideas en código de producción altamente optimizado.",
+  "ctaText": "Comenzar Proyecto",
+  "services": [
+    {
+      "title": "Desarrollo Web a Medida",
+      "description": "Aplicaciones web escalables y de altísimo rendimiento construidas con las mejores tecnologías modernas como React, Astro y arquitecturas sin servidor.",
+      "icon": "Code2"
+    },
+    {
+      "title": "Arquitectura Cloud",
+      "description": "Infraestructura resiliente y ultra-segura empleando Amazon Web Services, GCP y Azure para garantizar 99.99% de disponibilidad en tu negocio.",
+      "icon": "Cloud"
+    },
+    {
+      "title": "Integración de IA",
+      "description": "Potenciamos tus flujos operativos incrustando Inteligencia Artificial Nativa, modelos LLMs (Large Language Models) y automatizaciones inteligentes.",
+      "icon": "Cpu"
+    },
+    {
+      "title": "Desarrollo Móvil iOS/Android",
+      "description": "Experiencias de usuario impecables en múltiples plataformas de software celular entregando rendimiento nativo sin sacrificar la interfaz de usuario.",
+      "icon": "Smartphone"
+    }
+  ],
+  "caseStudies": [
+    {
+      "client": "Finanzas Tecnológicas S.A.",
+      "title": "Plataforma de Trading de Nueva Generación",
+      "description": "Construimos un panel de análisis de inversiones en tiempo real capaz de soportar millones de conexiones con sockets concurrentes diarios a latencia sub-milisegundo.",
+      "metric": "400% de Mejora en Tiempos de Carga"
+    },
+    {
+      "client": "Salud Inteligente Corporativa",
+      "title": "IA para Diagnóstico Integral del Paciente",
+      "description": "Integramos gigantes modelos de lenguaje en el antiguo y pesado sistema de historias médicas para extraer automáticamente diagnósticos de los reportes del sistema.",
+      "metric": "50h de Ahorro Administrativo Semanal"
+    },
+    {
+      "client": "Titanes del Comercio en Línea",
+      "title": "Infraestructura Logística Global",
+      "description": "Destruimos la arquitectura de monolitos antigua para diseñar una impecable e interminable fila infinita de servicios enfocados a la transaccionalidad.",
+      "metric": "99.99% Uptime Servidor"
+    }
+  ]
+}

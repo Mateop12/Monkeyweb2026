@@ -1,0 +1,65 @@
+{
+  "site": {
+    "title": "Innovate Software CMS",
+    "description": "Gestor de Contenido para Landing y Páginas secundarias.",
+    "branch": "main",
+    "mediaFolder": "public/images",
+    "publicFolder": "/images",
+    "collections": [
+      {
+        "name": "inicio",
+        "label": "Página de Inicio",
+        "files": [
+          {
+            "name": "home",
+            "label": "Contenido Principal (Inicio)",
+            "file": "src/content/landing/home.json",
+            "fields": [
+              { "name": "heroTitle", "label": "Título Principal", "widget": "string" },
+              { "name": "heroSubtitle", "label": "Subtítulo Principal", "widget": "text" },
+              { "name": "ctaText", "label": "Texto Botón CTA", "widget": "string" },
+              { "name": "services", "label": "Servicios", "widget": "list", "fields": [
+                { "name": "title", "label": "Título del Servicio", "widget": "string" },
+                { "name": "description", "label": "Descripción", "widget": "text" },
+                { "name": "icon", "label": "Ícono (Lucide)", "widget": "string" }
+              ]},
+              { "name": "caseStudies", "label": "Casos de Éxito", "widget": "list", "fields": [
+                { "name": "client", "label": "Cliente", "widget": "string" },
+                { "name": "title", "label": "Título del Proyecto", "widget": "string" },
+                { "name": "description", "label": "Descripción", "widget": "text" },
+                { "name": "metric", "label": "Métrica Clave", "widget": "string" }
+              ]}
+            ]
+          }
+        ]
+      },
+      {
+        "name": "paginas",
+        "label": "Otras Páginas",
+        "files": [
+          {
+            "name": "nosotros",
+            "label": "Nosotros",
+            "file": "src/content/landing/nosotros.json",
+            "fields": [
+              { "name": "title", "label": "Título Principal", "widget": "string" },
+              { "name": "mission", "label": "Nuestra Misión", "widget": "text" },
+              { "name": "vision", "label": "Nuestra Visión", "widget": "text" }
+            ]
+          },
+          {
+            "name": "contacto",
+            "label": "Contacto",
+            "file": "src/content/landing/contacto.json",
+            "fields": [
+              { "name": "title", "label": "Título", "widget": "string" },
+              { "name": "subtitle", "label": "Subtítulo", "widget": "text" },
+              { "name": "email", "label": "Correo Electrónico", "widget": "string" },
+              { "name": "phone", "label": "Teléfono", "widget": "string" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

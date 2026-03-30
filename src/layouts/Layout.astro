@@ -1,0 +1,57 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Premium Software Development Agency' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Structured Data & SEO Optimization -->
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    
+    <!-- Google Fonts for typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <title>{title}</title>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Innovate Software",
+        "applicationCategory": "Development",
+        "operatingSystem": "All"
+      }
+    </script>
+  </head>
+  <body class="font-sans antialiased text-brand-black min-h-screen flex flex-col selection:bg-brand-turquoise selection:text-white relative">
+    <!-- Ambient glowing backgrounds for "premium" feel on light mode -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-bg-main">
+      <div class="absolute -top-1/2 -left-1/2 w-full h-full bg-brand-turquoise/5 rounded-full blur-[120px]"></div>
+      <div class="absolute -bottom-1/2 -right-1/2 w-[80%] h-[80%] bg-brand-beige/25 rounded-full blur-[120px]"></div>
+    </div>
+    
+    <slot />
+  </body>
+</html>

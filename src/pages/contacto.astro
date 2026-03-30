@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+import contactoData from '../content/landing/contacto.json';
+---
+
+<Layout title={`${contactoData.title} | Innovate Software`}>
+  <Navbar />
+  
+  <main class="flex flex-col pt-32 pb-24 px-6 max-w-7xl mx-auto min-h-[85vh]">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      
+      <!-- Contact Info -->
+      <div class="flex flex-col gap-8 animate-[fade-in-up_0.8s_ease-out_forwards]">
+        <div class="flex flex-col gap-4">
+          <span class="text-brand-turquoise font-semibold tracking-wider uppercase text-sm">Soporte y Ventas</span>
+          <h1 class="text-5xl md:text-6xl font-heading font-extrabold text-brand-petroleum leading-tight">
+            {contactoData.title}
+          </h1>
+          <p class="text-brand-black/70 text-lg max-w-md leading-relaxed">
+            {contactoData.subtitle}
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-6 mt-4">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-brand-turquoise/10 flex items-center justify-center text-brand-teal">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-sm text-brand-black/50 font-medium">Correo Electrónico</span>
+              <a href={`mailto:${contactoData.email}`} class="text-brand-petroleum font-semibold hover:text-brand-turquoise transition-colors">{contactoData.email}</a>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-brand-turquoise/10 flex items-center justify-center text-brand-teal">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-sm text-brand-black/50 font-medium">Línea Directa</span>
+              <a href={`tel:${contactoData.phone}`} class="text-brand-petroleum font-semibold hover:text-brand-turquoise transition-colors">{contactoData.phone}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form UI -->
+      <div class="bg-white p-8 md:p-10 rounded-3xl border border-brand-beige shadow-2xl/10 animate-[fade-in-up_0.8s_ease-out_0.2s_forwards] opacity-0 flex flex-col gap-6 relative overflow-hidden">
+        
+        <div class="absolute -top-32 -right-32 w-64 h-64 bg-brand-turquoise/10 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+        <form class="flex flex-col gap-5 relative z-10" id="contact-form">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="flex flex-col gap-1.5 border border-brand-beige rounded-xl p-3 focus-within:border-brand-turquoise focus-within:ring-1 focus-within:ring-brand-turquoise transition-all bg-bg-main">
+              <label for="firstName" class="text-xs font-semibold text-brand-black/60 uppercase tracking-widest px-1">Nombre</label>
+              <input type="text" id="firstName" name="firstName" required class="bg-transparent border-none outline-none text-brand-petroleum px-1 placeholder-brand-black/30" placeholder="John" />
+            </div>
+            <div class="flex flex-col gap-1.5 border border-brand-beige rounded-xl p-3 focus-within:border-brand-turquoise focus-within:ring-1 focus-within:ring-brand-turquoise transition-all bg-bg-main">
+              <label for="lastName" class="text-xs font-semibold text-brand-black/60 uppercase tracking-widest px-1">Apellido</label>
+              <input type="text" id="lastName" name="lastName" required class="bg-transparent border-none outline-none text-brand-petroleum px-1 placeholder-brand-black/30" placeholder="Doe" />
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1.5 border border-brand-beige rounded-xl p-3 focus-within:border-brand-turquoise focus-within:ring-1 focus-within:ring-brand-turquoise transition-all bg-bg-main">
+            <label for="email" class="text-xs font-semibold text-brand-black/60 uppercase tracking-widest px-1">Email de la empresa</label>
+            <input type="email" id="email" name="email" required class="bg-transparent border-none outline-none text-brand-petroleum px-1 placeholder-brand-black/30" placeholder="john@empresa.com" />
+          </div>
+
+          <div class="flex flex-col gap-1.5 border border-brand-beige rounded-xl p-3 focus-within:border-brand-turquoise focus-within:ring-1 focus-within:ring-brand-turquoise transition-all bg-bg-main">
+            <label for="message" class="text-xs font-semibold text-brand-black/60 uppercase tracking-widest px-1">Mensaje o idea del proyecto</label>
+            <textarea id="message" name="message" rows="4" required class="bg-transparent border-none outline-none text-brand-petroleum px-1 placeholder-brand-black/30 resize-none mt-1" placeholder="Dinos qué tienes en mente..."></textarea>
+          </div>
+
+          <button type="button" class="mt-4 px-8 py-4 rounded-xl text-white font-semibold text-lg bg-brand-petroleum hover:bg-brand-teal transition-colors shadow-lg shadow-brand-petroleum/20 w-full active:scale-[0.98]">
+            Enviar Mensaje
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
