@@ -2,23 +2,65 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="py-12 px-6 border-t border-brand-beige/50 glass relative z-10 bg-bg-main" aria-label="Site footer">
-  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
-    
-    <div class="flex items-center gap-2">
-      <div class="w-6 h-6 rounded-md bg-brand-turquoise/20 flex items-center justify-center text-brand-petroleum font-heading font-bold text-xs" aria-hidden="true">X</div>
-      <span class="font-heading font-medium text-brand-petroleum">Innovate &copy; {currentYear}</span>
+<footer
+  class="py-12 px-6 border-t border-brand-beige/50 glass relative z-10 bg-bg-main"
+  aria-label="Site footer"
+>
+  <div
+    class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10"
+  >
+    <div class="flex items-center gap-3">
+      {/* Dynamic logos via CSS display toggling */}
+      <img
+        src="/logo-light.webp"
+        alt="Monkeymind Logo"
+        class="h-4 w-auto hidden dark:block opacity-90"
+      />
+      <img
+        src="/logo-dark.webp"
+        alt="Monkeymind Logo"
+        class="h-4 w-auto block dark:hidden opacity-90"
+      />
+      <span
+        class="font-heading font-medium text-brand-petroleum/80 text-sm border-l border-brand-beige pl-3"
+        >&copy; 2026</span
+      >
     </div>
 
-    <nav class="flex items-center gap-6" aria-label="Footer Navigation">
-      <a href="#" class="text-sm text-brand-black/60 hover:text-brand-turquoise transition-colors">Privacy</a>
-      <a href="#" class="text-sm text-brand-black/60 hover:text-brand-turquoise transition-colors">Terms</a>
-      <a href="#" class="text-sm text-brand-black/60 hover:text-brand-turquoise transition-colors">Twitter</a>
-      <a href="#" class="text-sm text-brand-black/60 hover:text-brand-turquoise transition-colors">LinkedIn</a>
+    <nav
+      class="flex items-center gap-6"
+      aria-label="Navegación del Pie de Página"
+    >
+      <a
+        href="#"
+        class="text-sm text-brand-black/60 hover:text-brand-turquoise transition-colors"
+        >Privacidad</a
+      >
+      <a
+        href="#"
+        class="text-sm text-brand-black/60 hover:text-brand-turquoise transition-colors"
+        >Términos</a
+      >
+      <a
+        href="#"
+        class="text-sm text-brand-black/60 hover:text-brand-turquoise transition-colors"
+        >Twitter</a
+      >
+      <a
+        href="#"
+        class="text-sm text-brand-black/60 hover:text-brand-turquoise transition-colors"
+        >LinkedIn</a
+      >
     </nav>
 
     <div class="text-xs text-brand-black/50 flex items-center gap-1">
-      Managed via <a href="https://sitepins.com" target="_blank" rel="noopener noreferrer" class="hover:text-brand-turquoise transition-colors font-medium text-brand-black/70">Sitepins CMS</a>
+      Gestionado con <a
+        href="https://sitepins.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-brand-turquoise transition-colors font-medium text-brand-black/70"
+        >Sitepins CMS</a
+      >
     </div>
   </div>
 </footer>

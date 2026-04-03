@@ -1,57 +1,164 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
+import FloatingButtons from '../components/react/FloatingButtons.tsx';
 
 interface Props {
   title: string;
   description?: string;
+  keywords?: string;
+  /** Ruta absoluta o relativa al dominio, ej. /monkeymind.webp */
+  image?: string;
+  ogType?: 'website' | 'article';
+  noindex?: boolean;
+  /** Schema.org adicional (p. ej. AboutPage, ContactPage) — se fusiona en @graph */
+  pageSchema?: Record<string, unknown>;
 }
 
-const { title, description = 'Premium Software Development Agency' } = Astro.props;
+const {
+  title,
+  description = "Monkeymind | Agencia experta en desarrollo web frontend y desarrollo de software a medida en Colombia.",
+  keywords = "desarrollo web alto impacto, proyectos digitales a medida, aplicaciones web escalables, posicionamiento SEO avanzado, optimización Google, diseño UX, desarrollo web Medellín, desarrollo software Colombia",
+  image = "/monkeymind.webp",
+  ogType = 'website',
+  noindex = false,
+  pageSchema,
+} = Astro.props;
+
+const site = Astro.site;
+const canonicalURL = site
+  ? new URL(Astro.url.pathname, site).href
+  : Astro.url.href;
+
+const absoluteImage = (() => {
+  if (!image) return undefined;
+  try {
+    return new URL(image, site ?? Astro.url.origin).href;
+  } catch {
+    return image;
+  }
+})();
+
+const siteBase = site ? new URL('/', site).href : `${new URL(canonicalURL).origin}/`;
+const organizationId = `${siteBase}#organization`;
+
+const jsonLdGraph: Record<string, unknown>[] = [
+  {
+    '@type': 'Organization',
+    '@id': organizationId,
+    name: 'Monkeymind',
+    url: siteBase,
+    logo: site ? new URL('/logo-dark.webp', site).href : undefined,
+    description:
+      'Desarrollo de software a medida, aplicaciones web y estrategia digital en Colombia.',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Medellín',
+      addressCountry: 'CO',
+    },
+  },
+  {
+    '@type': 'WebSite',
+    name: 'Monkeymind',
+    url: siteBase,
+    publisher: { '@id': organizationId },
+    inLanguage: 'es-CO',
+  },
+];
+
+if (pageSchema) {
+  jsonLdGraph.push({
+    ...pageSchema,
+    url: (pageSchema.url as string) ?? canonicalURL,
+  });
+}
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': jsonLdGraph,
+};
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es-CO">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    
-    <!-- Structured Data & SEO Optimization -->
-    <meta name="robots" content="index, follow" />
+
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="Monkeymind" />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+    <link rel="canonical" href={canonicalURL} />
+
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="Monkeymind" />
+    <meta property="og:locale" content="es_CO" />
+    {absoluteImage && <meta property="og:image" content={absoluteImage} />}
+    {absoluteImage && <meta property="og:image:alt" content="Monkeymind — desarrollo de software" />}
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    
-    <!-- Google Fonts for typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <title>{title}</title>
+    {absoluteImage && <meta name="twitter:image" content={absoluteImage} />}
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Innovate Software",
-        "applicationCategory": "Development",
-        "operatingSystem": "All"
+    <meta name="theme-color" content="#062B22" />
+
+    <!-- Google Fonts for typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+    <script is:inline>
+      const theme = (() => {
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme");
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+        return "light";
+      })();
+      if (theme === "light") {
+        document.documentElement.classList.remove("dark");
+      } else {
+        document.documentElement.classList.add("dark");
       }
+      window.localStorage.setItem("theme", theme);
     </script>
   </head>
-  <body class="font-sans antialiased text-brand-black min-h-screen flex flex-col selection:bg-brand-turquoise selection:text-white relative">
+  <body
+    class="font-sans antialiased text-brand-black min-h-screen flex flex-col selection:bg-brand-turquoise selection:text-white relative bg-bg-main overflow-x-hidden"
+  >
     <!-- Ambient glowing backgrounds for "premium" feel on light mode -->
-    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-bg-main">
-      <div class="absolute -top-1/2 -left-1/2 w-full h-full bg-brand-turquoise/5 rounded-full blur-[120px]"></div>
-      <div class="absolute -bottom-1/2 -right-1/2 w-[80%] h-[80%] bg-brand-beige/25 rounded-full blur-[120px]"></div>
+    <div
+      class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-bg-main"
+    >
+      <div
+        class="absolute -top-1/2 -left-1/2 w-full h-full bg-brand-turquoise/5 rounded-full blur-[120px]"
+      >
+      </div>
+      <div
+        class="absolute -bottom-1/2 -right-1/2 w-[80%] h-[80%] bg-brand-beige/25 rounded-full blur-[120px]"
+      >
+      </div>
     </div>
-    
+
+    <FloatingButtons client:load />
     <slot />
   </body>
 </html>

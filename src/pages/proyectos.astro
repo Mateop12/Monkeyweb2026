@@ -2,12 +2,26 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import CaseStudies from '../components/CaseStudies.astro';
+import Testimonials from '../components/react/Testimonials.tsx';
 import Footer from '../components/Footer.astro';
 
 import homeData from '../content/landing/home.json';
+
+const pageSchema = {
+  '@type': 'CollectionPage',
+  name: 'Casos de éxito | Monkeymind',
+  description:
+    'Casos de éxito y proyectos de desarrollo de software, plataformas web y aplicaciones a medida realizados por Monkeymind.',
+};
 ---
 
-<Layout title="Nuestros Proyectos | Innovate Software">
+<Layout
+  title="Monkeymind | Casos de Éxito y Proyectos"
+  description="Casos de éxito: proyectos de desarrollo web, plataformas escalables y software a medida. Testimonios de clientes y resultados medibles."
+  keywords="casos éxito desarrollo software, proyectos web Medellín, portafolio software Colombia, testimonios Monkeymind"
+  image="/ideasmonkeymind.webp"
+  pageSchema={pageSchema}
+>
   <Navbar />
   
   <main class="flex flex-col pt-20">
@@ -22,6 +36,9 @@ import homeData from '../content/landing/home.json';
 
     <!-- Reuse the component to render the cards inside the page body -->
     <CaseStudies caseStudies={homeData.caseStudies} />
+
+    <!-- Testimonials Section -->
+    <Testimonials client:visible testimonials={homeData.testimonials} />
   </main>
 
   <Footer />

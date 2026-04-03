@@ -1,5 +1,38 @@
 {
-  "title": "Sobre Innovate.",
+  "title": "Sobre Monkeymind",
+  "intro": "Equipo de producto y tecnología con foco en software que escala. Estas son nuestras cifras, nuestra misión y las alianzas que nos acompañan.",
+  "seoDescription": "Conoce la misión, visión e impacto de Monkeymind: desarrollo de software a medida, proyectos digitales y alianzas en Medellín y Colombia.",
+  "seoKeywords": "Monkeymind, agencia desarrollo software Medellín, desarrollo web Colombia, desarrollo de software a medida, software a medida, equipo tecnológico, casos de éxito",
+  "statsSectionTitle": "Impacto en proyectos",
+  "statsSectionSubtitle": "Cifras que reflejan el trabajo conjunto con equipos y empresas.",
+  "stats": [
+    {
+      "value": "85+",
+      "label": "Proyectos entregados",
+      "hint": "Web, apps y plataformas a medida"
+    },
+    {
+      "value": "40+",
+      "label": "Clientes satisfechos",
+      "hint": "Startups y empresas en crecimiento"
+    },
+    {
+      "value": "12",
+      "label": "Países con despliegues",
+      "hint": "Presencia regional e internacional"
+    },
+    {
+      "value": "99.9%",
+      "label": "Disponibilidad objetivo",
+      "hint": "Infraestructura y soporte proactivo"
+    }
+  ],
   "mission": "Nuestra misión es democratizar el acceso a la alta ingeniería de software para startups y empresas en crecimiento, entregando productos que no solo funcionen, sino que dominen su mercado con arquitecturas de clase mundial.",
-  "vision": "Buscamos ser el principal puente tecnológico entre la innovación pura y las empresas de la nueva economía, formando el estándar de calidad en el desarrollo de software a nivel global."
+  "vision": "Buscamos ser el principal puente tecnológico entre la innovación pura y las empresas de la nueva economía, consolidando un estándar de calidad en el desarrollo de software a nivel global.",
+  "allies": [
+    { "name": "Nexus Tech", "image": "/aliados/nexus.png" },
+    { "name": "Stellar Solutions", "image": "/aliados/stellar.png" },
+    { "name": "Quantum AI", "image": "/aliados/quantum.png" },
+    { "name": "Apex Cloud", "image": "/aliados/apex.png" }
+  ]
 }

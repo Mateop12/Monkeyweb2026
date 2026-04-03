@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-heading: 'Outfit', ui-sans-serif, system-ui, sans-serif;
@@ -15,6 +17,9 @@
 
   --color-bg-main: var(--bg-main);
   --color-bg-alt: var(--bg-alt);
+
+  --animate-fade-in: fade-in 0.8s ease-out forwards;
+  --animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
 }
 
 :root {
@@ -39,6 +44,10 @@
   /* Fondos claros profesionales */
   --bg-main: #FFFFFF;
   --bg-alt: #FDFBF7; /* Un tono casi blanco, inspirado en el beige */
+  
+  /* Background de Tarjetas */
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #FDFBF7;
 }
 
 body {
@@ -48,11 +57,34 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Dark Mode Variables Swapping */
+.dark {
+  --bg-main: #111909; /* Negro verdoso profundo para fondo principal */
+  --bg-alt: #03201a; /* Verde muy oscuro en vez de beige para contrastes */
+  
+  /* Invertir el texto y bordes principales */
+  --brand-black: #FDFBF7; /* Texto que era negro ahora es blanco suave */
+  --brand-petroleum: #F1DBB2; /* Títulos que eran verde oscuro, ahora son beige corporativo */
+  --brand-beige: #243F22; /* Fondos o bordes beige claro ahora son verde oliva oscuro */
+  
+  /* Acentos interactivos un poco más vibrantes para fondo oscuro */
+  --brand-turquoise: #148b8b;
+  
+  /* Background de Tarjetas oscuro */
+  --bg-card: #0e1507;
+  --bg-card-hover: #03201a;
+}
+
 .glass {
   background: rgba(255, 255, 255, 0.85); /* Fondo claro con efecto cristal */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(6, 43, 34, 0.05); /* Borde sutil oscuro */
+}
+
+.dark .glass {
+  background: rgba(17, 25, 9, 0.85); /* Negro verdoso en cristal */
+  border: 1px solid rgba(241, 219, 178, 0.05); /* Borde beige translúcido */
 }
 
 html {
@@ -64,4 +96,28 @@ html {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
 }

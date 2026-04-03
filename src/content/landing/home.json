@@ -1,27 +1,27 @@
 {
   "heroTitle": "Construimos Software que Escala.",
-  "heroSubtitle": "Somos una agencia premier de desarrollo especializada en aplicaciones web full-stack, arquitecturas en la nube, e integración de Inteligencia Artificial profunda. Transformamos tus ideas en código de producción altamente optimizado.",
+  "heroSubtitle": "¿Quieres soluciones intuitivas y llamativas para la optimización de tus procesos? Somos la mejor opción para hacer realidad tus sueños.🚀 Desarrollo de software a la medida para tus proyectos.",
   "ctaText": "Comenzar Proyecto",
   "services": [
     {
-      "title": "Desarrollo Web a Medida",
-      "description": "Aplicaciones web escalables y de altísimo rendimiento construidas con las mejores tecnologías modernas como React, Astro y arquitecturas sin servidor.",
+      "title": "Desarrollo Web",
+      "description": "Webs de alto impacto, desde sitios informativos hasta plataformas avanzadas con diseño atractivo y experiencia de usuario impecable.",
       "icon": "Code2"
     },
     {
-      "title": "Arquitectura Cloud",
-      "description": "Infraestructura resiliente y ultra-segura empleando Amazon Web Services, GCP y Azure para garantizar 99.99% de disponibilidad en tu negocio.",
-      "icon": "Cloud"
-    },
-    {
-      "title": "Integración de IA",
-      "description": "Potenciamos tus flujos operativos incrustando Inteligencia Artificial Nativa, modelos LLMs (Large Language Models) y automatizaciones inteligentes.",
+      "title": "Proyectos a Medida",
+      "description": "Soluciones digitales personalizadas e innovadoras, diseñadas específicamente para dar vida a la visión única de tu marca.",
       "icon": "Cpu"
     },
     {
-      "title": "Desarrollo Móvil iOS/Android",
-      "description": "Experiencias de usuario impecables en múltiples plataformas de software celular entregando rendimiento nativo sin sacrificar la interfaz de usuario.",
+      "title": "Aplicaciones Web",
+      "description": "Plataformas escalables y seguras pensadas para optimizar procesos, mejorar tiempos y llevar tu empresa al siguiente nivel.",
       "icon": "Smartphone"
+    },
+    {
+      "title": "Posicionamiento SEO",
+      "description": "Estrategias avanzadas para aparecer en los primeros resultados de Google, aumentando tu visibilidad y captación de clientes.",
+      "icon": "TrendingUp"
     }
   ],
   "caseStudies": [
@@ -42,6 +42,29 @@
       "title": "Infraestructura Logística Global",
       "description": "Destruimos la arquitectura de monolitos antigua para diseñar una impecable e interminable fila infinita de servicios enfocados a la transaccionalidad.",
       "metric": "99.99% Uptime Servidor"
+    }
+  ],
+  "testimonials": [
+    {
+      "content": "Monkeymind transformó por completo nuestra infraestructura corporativa. Su nivel de madurez técnica en desarrollo de software a medida y arquitecturas escalables nos permitió duplicar nuestro tráfico sin sufrir ningún problema de latencia.",
+      "name": "Andrea Giraldo",
+      "role": "Directora de Tecnología",
+      "company": "Finsystem Corp",
+      "initials": "AG"
+    },
+    {
+      "content": "La atención al detalle en el desarrollo frontend es simplemente espectacular. Las interfaces reactivas y la velocidad de la aplicación nos ayudaron a mejorar nuestra retención de clientes en un 300% en el primer trimestre.",
+      "name": "Santiago Restrepo",
+      "role": "CEO & Fundador",
+      "company": "Elevate Logistics",
+      "initials": "SR"
+    },
+    {
+      "content": "Elegir a esta agencia en Medellín fue la mejor decisión para nuestro startup. Nos llevaron desde una idea cruda hasta un producto funcional integrado con IA que actualmente lidera en innovación en nuestro sector.",
+      "name": "Carolina Vélez",
+      "role": "Product Manager",
+      "company": "SmartData Health",
+      "initials": "CV"
     }
   ]
 }

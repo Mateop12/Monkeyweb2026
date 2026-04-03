@@ -2,8 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import HeroReact from '../components/react/Hero.tsx';
-import ServicesReact from '../components/react/Services.tsx';
+import ServicesPreview from '../components/react/ServicesPreview.tsx';
+import Marquee from '../components/react/Marquee.tsx';
 import CaseStudies from '../components/CaseStudies.astro';
+import Testimonials from '../components/react/Testimonials.tsx';
 import Footer from '../components/Footer.astro';
 
 // Import the CMS mock data directly
@@ -11,7 +13,12 @@ import homeData from '../content/landing/home.json';
 
 ---
 
-<Layout title="Innovate - Software Development Agency">
+<Layout
+  title="Monkeymind | Desarrollo de Software a Medida Colombia - Medellín"
+  description="Expertos en desarrollo web frontend y desarrollo de software a medida en Colombia — Medellín. Arquitecturas web escalables, apps y posicionamiento SEO."
+  keywords="Monkeymind, desarrollo software Medellín, desarrollo web Colombia, software a medida, aplicaciones web, SEO Colombia, agencia desarrollo"
+  image="/monkeymind.webp"
+>
   <Navbar />
   
   <main class="flex flex-col">
@@ -23,12 +30,16 @@ import homeData from '../content/landing/home.json';
       ctaText={homeData.ctaText} 
     />
     
-    <ServicesReact 
-      client:load
-      services={homeData.services} 
+    <ServicesPreview
+      client:visible
+      services={homeData.services}
     />
     
+    <Marquee client:visible />
+
     <CaseStudies caseStudies={homeData.caseStudies} />
+
+    <Testimonials client:visible testimonials={homeData.testimonials} />
   </main>
 
   <Footer />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Cloud, Cpu, Smartphone } from 'lucide-react';
+import { Code2, Cloud, Cpu, Smartphone, TrendingUp } from 'lucide-react';
 
 interface Service {
   title: string;
@@ -16,7 +16,8 @@ const iconMap = {
   Code2,
   Cloud,
   Cpu,
-  Smartphone
+  Smartphone,
+  TrendingUp
 };
 
 export default function Services({ services }: ServicesProps) {
@@ -65,7 +66,7 @@ export default function Services({ services }: ServicesProps) {
               <motion.div 
                 key={index}
                 variants={item}
-                className="group p-8 rounded-3xl bg-white border border-brand-beige hover:border-brand-turquoise/30 hover:bg-bg-alt hover:shadow-xl transition-all duration-500 ease-out hover:-translate-y-2 relative overflow-hidden"
+                className="group p-8 rounded-3xl bg-[var(--bg-card)] border border-brand-beige hover:border-brand-turquoise/30 hover:bg-[var(--bg-card-hover)] transition-all duration-500 ease-out hover:-translate-y-2 relative overflow-hidden"
                 tabIndex={0}
               >
                 {/* Background Hover Glow */}

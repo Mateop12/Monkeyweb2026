@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import ServicesReact from '../components/react/Services.tsx';
+import Marquee from '../components/react/Marquee.tsx';
+
+import homeData from '../content/landing/home.json';
+---
+
+<Layout
+  title="Monkeymind | Servicios de Desarrollo Web y Software a Medida"
+  description="Servicios profesionales: desarrollo web de alto impacto, proyectos digitales a medida, aplicaciones escalables y posicionamiento SEO avanzado en Colombia."
+  keywords="servicios desarrollo web, software a medida, aplicaciones escalables, SEO técnico, agencia desarrollo Medellín, Monkeymind servicios"
+  image="/monkeymind.webp"
+>
+  <Navbar />
+
+  <main class="flex flex-col pt-20">
+
+    {/* Hero de la página */}
+    <div class="px-6 py-20 text-center max-w-4xl mx-auto">
+      <span class="text-brand-turquoise font-semibold tracking-wider uppercase text-sm block mb-4">Nuestras Capacidades</span>
+      <h1 class="text-5xl md:text-6xl font-heading font-extrabold text-brand-petroleum mb-6">
+        Servicios que Impulsan tu Empresa
+      </h1>
+      <p class="text-brand-black/70 text-lg max-w-2xl mx-auto leading-relaxed">
+        Desde el desarrollo web de alto impacto hasta aplicaciones escalables y estrategias avanzadas de SEO. Todo diseñado a la medida para convertir tu visión en una realidad digital competitiva.
+      </p>
+    </div>
+
+    <Marquee client:visible />
+
+    {/* Todos los servicios con el componente completo */}
+    <ServicesReact client:visible services={homeData.services} />
+
+    {/* Sección de Proceso */}
+    <section class="py-24 px-6 bg-bg-alt relative z-10" aria-labelledby="process-heading">
+      <div class="max-w-7xl mx-auto flex flex-col gap-16">
+        <div class="flex flex-col gap-4 text-center max-w-2xl mx-auto">
+          <span class="text-brand-turquoise font-semibold tracking-wider uppercase text-sm">Metodología</span>
+          <h2 id="process-heading" class="text-4xl md:text-5xl font-heading font-bold text-brand-petroleum">
+            Cómo lo hacemos posible.
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {[
+            { step: '01', title: 'Descubrimiento', desc: 'Analizamos tu negocio, tus metas y el problema a resolver a profundidad.' },
+            { step: '02', title: 'Arquitectura', desc: 'Diseñamos la arquitectura técnica óptima para escalar sin fricción.' },
+            { step: '03', title: 'Desarrollo', desc: 'Construimos en sprints iterativos con demos semanales para tu validación.' },
+            { step: '04', title: 'Lanzamiento', desc: 'Desplegamos en producción con monitoreo activo y soporte post-lanzamiento.' },
+          ].map((phase) => (
+            <div class="flex flex-col gap-4 p-8 rounded-3xl border border-brand-beige bg-[var(--bg-card)] hover:border-brand-turquoise/30 transition-colors duration-300 group">
+              <span class="font-heading font-black text-5xl text-brand-turquoise/20 group-hover:text-brand-turquoise/40 transition-colors">{phase.step}</span>
+              <h3 class="font-heading font-bold text-xl text-brand-petroleum">{phase.title}</h3>
+              <p class="text-brand-black/60 text-sm leading-relaxed">{phase.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* CTA Final */}
+    <section class="py-24 px-6 text-center relative z-10">
+      <div class="max-w-3xl mx-auto flex flex-col items-center gap-8">
+        <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-brand-petroleum">
+          ¿Listo para comenzar tu proyecto?
+        </h2>
+        <p class="text-brand-black/60 text-lg">Cuéntanos tu idea y te daremos una propuesta personalizada sin costo.</p>
+        <a
+          href="/contacto"
+          class="inline-flex items-center gap-2 px-10 py-4 rounded-full bg-brand-petroleum text-white font-semibold hover:bg-brand-teal hover:shadow-[0_0_30px_rgba(11,93,94,0.4)] transition-all duration-300 hover:-translate-y-1 text-base"
+        >
+          Hablemos de tu Proyecto
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,147 @@
+---
+interface Props {
+  id?: string;
+}
+
+const { id = "contact-form-premium" } = Astro.props;
+---
+
+<div class="relative w-full">
+  <!-- Intuitive Form UI Wrapper -->
+  <div class="bg-white/90 dark:bg-bg-alt/90 backdrop-blur-2xl p-8 md:p-10 rounded-[2.5rem] border border-brand-beige/50 shadow-[0_32px_64px_-16px_rgba(6,43,34,0.1)] relative overflow-hidden transition-all duration-500">
+    
+    <div class="absolute -top-32 -right-32 w-64 h-64 bg-brand-turquoise/5 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+    <form class="flex flex-col gap-6 relative z-10" id={id}>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="group relative flex flex-col gap-2">
+          <label for="firstName" class="text-[10px] font-bold text-brand-black/40 uppercase tracking-[0.2em] pl-1 group-focus-within:text-brand-turquoise transition-colors">
+            Nombre
+          </label>
+          <input 
+            type="text" 
+            id="firstName" 
+            name="firstName" 
+            required 
+            placeholder="John" 
+            class="w-full bg-bg-main/50 border-2 border-brand-beige/20 rounded-2xl px-5 py-4 text-brand-petroleum outline-none focus:border-brand-turquoise focus:ring-4 focus:ring-brand-turquoise/5 transition-all placeholder:text-brand-black/20"
+          />
+        </div>
+        <div class="group relative flex flex-col gap-2">
+          <label for="lastName" class="text-[10px] font-bold text-brand-black/40 uppercase tracking-[0.2em] pl-1 group-focus-within:text-brand-turquoise transition-colors">
+            Apellido
+          </label>
+          <input 
+            type="text" 
+            id="lastName" 
+            name="lastName" 
+            required 
+            placeholder="Doe" 
+            class="w-full bg-bg-main/50 border-2 border-brand-beige/20 rounded-2xl px-5 py-4 text-brand-petroleum outline-none focus:border-brand-turquoise focus:ring-4 focus:ring-brand-turquoise/5 transition-all placeholder:text-brand-black/20"
+          />
+        </div>
+      </div>
+
+      <div class="group relative flex flex-col gap-2">
+        <label for="email" class="text-[10px] font-bold text-brand-black/40 uppercase tracking-[0.2em] pl-1 group-focus-within:text-brand-turquoise transition-colors">
+          Email de la empresa
+        </label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          required 
+          placeholder="john@empresa.com" 
+          class="w-full bg-bg-main/50 border-2 border-brand-beige/20 rounded-2xl px-5 py-4 text-brand-petroleum outline-none focus:border-brand-turquoise focus:ring-4 focus:ring-brand-turquoise/5 transition-all placeholder:text-brand-black/20"
+        />
+      </div>
+
+      <div class="group relative flex flex-col gap-2">
+        <label for="interest" class="text-[10px] font-bold text-brand-black/40 uppercase tracking-[0.2em] pl-1 group-focus-within:text-brand-turquoise transition-colors">
+          ¿Cómo podemos ayudarte?
+        </label>
+        <div class="relative">
+          <select 
+            id="interest" 
+            name="interest" 
+            class="w-full bg-bg-main/50 border-2 border-brand-beige/20 rounded-2xl px-5 py-4 text-brand-petroleum outline-none focus:border-brand-turquoise focus:ring-4 focus:ring-brand-turquoise/5 transition-all appearance-none cursor-pointer"
+          >
+            <option value="software">Desarrollo de Software</option>
+            <option value="design">Diseño UI/UX</option>
+            <option value="consulting">Consultoría Estratégica</option>
+            <option value="other">Otro Proyecto</option>
+          </select>
+          <div class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-brand-black/30">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="group relative flex flex-col gap-2">
+        <label for="message" class="text-[10px] font-bold text-brand-black/40 uppercase tracking-[0.2em] pl-1 group-focus-within:text-brand-turquoise transition-colors">
+          Mensaje o idea del proyecto
+        </label>
+        <textarea 
+          id="message" 
+          name="message" 
+          rows="4" 
+          required
+          placeholder="Dinos qué tienes en mente..." 
+          class="w-full bg-bg-main/50 border-2 border-brand-beige/20 rounded-2xl px-5 py-4 text-brand-petroleum outline-none focus:border-brand-turquoise focus:ring-4 focus:ring-brand-turquoise/5 transition-all placeholder:text-brand-black/20 resize-none"
+        ></textarea>
+      </div>
+
+      <button 
+        type="submit" 
+        class="group relative overflow-hidden mt-2 bg-brand-petroleum text-white font-bold text-lg py-5 rounded-2xl shadow-xl shadow-brand-petroleum/20 hover:shadow-2xl hover:shadow-brand-turquoise/30 transition-all active:scale-[0.98]"
+      >
+        <span class="relative z-10 flex items-center justify-center gap-3">
+          Enviar Mensaje
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform duration-300"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </span>
+        <div class="absolute inset-0 bg-brand-turquoise translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
+      </button>
+    </form>
+    
+    <!-- Success Feedback Overlay -->
+    <div id="contact-success" class="hidden absolute inset-0 bg-bg-main/95 backdrop-blur-md flex-col items-center justify-center text-center p-10 rounded-[2.5rem] z-20 animate-[fade-in_0.4s_ease-out]">
+      <div class="w-24 h-24 bg-brand-turquoise/10 text-brand-turquoise rounded-full flex items-center justify-center mb-6 animate-bounce">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h3 class="text-3xl font-heading font-extrabold text-brand-petroleum mb-3">¡Mensaje Recibido!</h3>
+      <p class="text-brand-black/60 text-lg max-w-xs leading-relaxed">Pronto un experto de nuestro equipo se pondrá en contacto contigo.</p>
+      <button id="contact-reset" class="mt-8 text-brand-turquoise font-bold hover:text-brand-teal transition-colors flex items-center gap-2 group">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-180 transition-transform duration-500"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+        Enviar otro mensaje
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  // Simple script with is:inline to avoid bundling issues if needed, but Astro usually handles this
+  // Using an ID with a suffix for safety if multiple forms exist
+  (function() {
+    const formId = "contact-form-premium";
+    const form = document.getElementById(formId);
+    const successOverlay = document.getElementById('contact-success');
+    const resetBtn = document.getElementById('contact-reset');
+
+    if (form && successOverlay && resetBtn) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        successOverlay.classList.remove('hidden');
+        successOverlay.classList.add('flex');
+        form.classList.add('opacity-0', 'pointer-events-none');
+      });
+
+      resetBtn.addEventListener('click', () => {
+        successOverlay.classList.add('hidden');
+        successOverlay.classList.remove('flex');
+        form.classList.remove('opacity-0', 'pointer-events-none');
+        form.reset();
+      });
+    }
+  })();
+</script>

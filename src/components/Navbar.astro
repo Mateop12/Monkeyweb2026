@@ -1,28 +1,184 @@
 ---
 // Navbar.astro
 ---
-<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass border-b border-brand-beige/30" aria-label="Navegación Principal">
+
+<header
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass border-b border-brand-beige/30"
+  aria-label="Navegación Principal"
+>
   <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
     <a href="/" class="flex items-center gap-2 group" aria-label="Ir al inicio">
-      <div class="w-8 h-8 rounded-lg bg-linear-to-br from-brand-turquoise to-brand-petroleum flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300 shadow-[0_0_15px_rgba(11,93,94,0.3)]">
-        <span class="text-white font-heading font-bold text-lg">X</span>
-      </div>
-      <span class="font-heading font-bold text-xl tracking-tight text-brand-petroleum hover:text-brand-turquoise transition-colors">Innovate.</span>
+      {
+        /* Dynamic logos via CSS display toggling to support no-js / instant load */
+      }
+      <img
+        src="/logo-light.webp"
+        alt="Monkeymind Logo"
+        class="h-8 w-auto hidden dark:block group-hover:scale-105 transition-transform"
+      />
+      <img
+        src="/logo-dark.webp"
+        alt="Monkeymind Logo"
+        class="h-8 w-auto block dark:hidden group-hover:scale-105 transition-transform"
+      />
     </a>
 
-    <nav class="hidden md:flex items-center gap-8" aria-label="Navegación de Escritorio">
-      <a href="/#servicios" class="text-sm font-medium text-brand-black/70 hover:text-brand-petroleum transition-colors">Servicios</a>
-      <a href="/proyectos" class="text-sm font-medium text-brand-black/70 hover:text-brand-petroleum transition-colors">Proyectos</a>
-      <a href="/nosotros" class="text-sm font-medium text-brand-black/70 hover:text-brand-petroleum transition-colors">Nosotros</a>
+    <nav
+      class="hidden md:flex items-center gap-8"
+      aria-label="Navegación de Escritorio"
+    >
+      <a
+        href="/nosotros"
+        class="text-sm font-medium text-brand-black/70 hover:text-brand-petroleum transition-colors"
+        >Nosotros</a
+      >
+      <a
+        href="/servicios"
+        class="text-sm font-medium text-brand-black/70 hover:text-brand-petroleum transition-colors"
+        >Servicios</a
+      >
+      <a
+        href="/proyectos"
+        class="text-sm font-medium text-brand-black/70 hover:text-brand-petroleum transition-colors"
+        >Proyectos</a
+      >
     </nav>
 
     <div class="flex items-center gap-4">
-      <a href="/contacto" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-brand-petroleum border border-brand-turquoise/30 rounded-full hover:bg-brand-teal hover:shadow-[0_0_20px_rgba(11,93,94,0.3)] transition-all duration-300 ease-out transform hover:-translate-y-0.5">
+      {/* Theme Toggle Button */}
+      <button
+        id="themeToggleBtn"
+        aria-label="Alternar Tema Oscuro"
+        class="p-2 rounded-full bg-bg-alt border border-brand-beige/50 text-brand-petroleum hover:bg-brand-turquoise/10 transition-colors"
+      >
+        <svg
+          id="themeIconSun"
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="hidden dark:block"
+          ><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path
+            d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path
+            d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path
+            d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path
+            d="m19.07 4.93-1.41 1.41"></path></svg
+        >
+        <svg
+          id="themeIconMoon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="block dark:hidden"
+          ><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg
+        >
+      </button>
+
+      <a
+        href="/contacto"
+        class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-brand-petroleum border border-brand-turquoise/30 rounded-full hover:bg-brand-teal hover:shadow-[0_0_20px_rgba(11,93,94,0.3)] transition-all duration-300 ease-out transform hover:-translate-y-0.5"
+      >
         Contáctanos
       </a>
-      <button class="md:hidden text-brand-black/70 hover:text-brand-petroleum transition-colors" aria-label="Abrir Menú Móvil" aria-expanded="false" aria-controls="mobile-menu">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      <button
+        id="mobileMenuBtn"
+        class="md:hidden text-brand-black/70 hover:text-brand-petroleum transition-colors"
+        aria-label="Abrir Menú Móvil"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          ><line x1="4" x2="20" y1="12" y2="12"></line><line
+            x1="4"
+            x2="20"
+            y1="6"
+            y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg
+        >
       </button>
     </div>
   </div>
+
+  {/* Mobile Navigation Menu */}
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-bg-main border-t border-brand-beige/30 absolute w-full left-0 top-20 shadow-xl"
+    aria-hidden="true"
+  >
+    <nav class="flex flex-col py-4 px-6 gap-4" aria-label="Navegación Móvil">
+      <a
+        href="/servicios"
+        class="text-lg font-medium text-brand-black/80 hover:text-brand-turquoise transition-colors block py-2"
+        >Servicios</a
+      >
+      <a
+        href="/proyectos"
+        class="text-lg font-medium text-brand-black/80 hover:text-brand-turquoise transition-colors block py-2"
+        >Proyectos</a
+      >
+      <a
+        href="/nosotros"
+        class="text-lg font-medium text-brand-black/80 hover:text-brand-turquoise transition-colors block py-2"
+        >Nosotros</a
+      >
+      <a
+        href="/contacto"
+        class="text-lg font-medium text-brand-turquoise bg-brand-turquoise/5 p-3 rounded-lg text-center mt-2 border border-brand-turquoise/20"
+        >Contáctanos</a
+      >
+    </nav>
+  </div>
 </header>
+<script is:inline>
+  // Theme Toggle
+  const toggleBtn = document.getElementById("themeToggleBtn");
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+      if (document.documentElement.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+      } else {
+        localStorage.setItem("theme", "light");
+      }
+    });
+  }
+
+  // Mobile Menu Toggle
+  const mobileBtn = document.getElementById("mobileMenuBtn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener("click", () => {
+      const isExpanded = mobileBtn.getAttribute("aria-expanded") === "true";
+
+      mobileBtn.setAttribute("aria-expanded", !isExpanded);
+      if (isExpanded) {
+        mobileMenu.classList.add("hidden");
+        mobileMenu.setAttribute("aria-hidden", "true");
+      } else {
+        mobileMenu.classList.remove("hidden");
+        mobileMenu.setAttribute("aria-hidden", "false");
+      }
+    });
+  }
+</script>

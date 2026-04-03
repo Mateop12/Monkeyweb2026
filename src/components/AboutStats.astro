@@ -1,0 +1,84 @@
+---
+/**
+ * Estadísticas de impacto — datos desde nosotros.json (stats).
+ */
+interface Stat {
+  value: string;
+  label: string;
+  hint?: string;
+}
+
+interface Props {
+  sectionTitle?: string;
+  sectionSubtitle?: string;
+  stats: Stat[];
+}
+
+const {
+  sectionTitle = 'Impacto en números',
+  sectionSubtitle = 'Resultados acumulados en proyectos digitales y colaboraciones.',
+  stats,
+} = Astro.props;
+---
+
+<section
+  class="relative w-full overflow-hidden rounded-[2rem] border border-brand-beige/80 bg-gradient-to-br from-[var(--bg-card)] via-[var(--bg-card)] to-brand-turquoise/[0.06] px-5 py-12 shadow-[0_24px_80px_-24px_rgba(6,43,34,0.15)] dark:border-brand-olive/40 dark:from-[var(--bg-card)] dark:to-brand-teal/20 sm:px-8 sm:py-14 md:px-10 md:py-16"
+  aria-labelledby="about-stats-heading"
+>
+  <div
+    class="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-brand-turquoise/[0.12] blur-3xl dark:bg-brand-turquoise/10"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute -bottom-20 -left-16 h-56 w-56 rounded-full bg-brand-caramel/10 blur-3xl dark:bg-brand-caramel/5"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative mx-auto max-w-5xl text-center">
+    <p class="text-brand-turquoise dark:text-brand-turquoise mb-3 text-xs font-semibold uppercase tracking-[0.2em] sm:text-sm">
+      Trayectoria
+    </p>
+    <h2
+      id="about-stats-heading"
+      class="font-heading text-brand-petroleum mb-3 text-3xl font-extrabold tracking-tight sm:text-4xl md:text-[2.75rem]"
+    >
+      {sectionTitle}
+    </h2>
+    <p class="text-brand-black/65 mx-auto max-w-2xl text-base leading-relaxed sm:text-lg">
+      {sectionSubtitle}
+    </p>
+  </div>
+
+  <ul
+    class="relative mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6"
+    role="list"
+  >
+    {
+      stats.map((stat, i) => (
+        <li
+          class="group flex flex-col justify-between rounded-2xl border border-brand-beige/70 bg-[var(--bg-card)]/90 p-6 text-center shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-turquoise/35 hover:shadow-[0_20px_40px_-20px_rgba(11,93,94,0.25)] dark:border-brand-olive/30 dark:bg-[var(--bg-card)]/80"
+          style={`animation: fade-in-up 0.7s ease-out ${0.08 * i}s both`}
+        >
+          <div>
+            <p
+              class="font-heading text-brand-petroleum mb-1 text-4xl font-black tabular-nums tracking-tight sm:text-[2.75rem] md:text-5xl"
+              aria-label={`${stat.label}: ${stat.value}`}
+            >
+              {stat.value}
+            </p>
+            <p class="text-brand-black/80 font-heading text-sm font-semibold leading-snug sm:text-base">
+              {stat.label}
+            </p>
+          </div>
+          {stat.hint ? (
+            <p class="text-brand-black/45 mt-4 border-t border-brand-beige/50 pt-3 text-xs font-medium dark:border-brand-olive/40">
+              {stat.hint}
+            </p>
+          ) : null}
+        </li>
+      ))
+    }
+  </ul>
+</section>
