@@ -1,4 +1,5 @@
 {
+  "whatsappPhone": "573000000000",
   "heroTitle": "Construimos Software que Escala.",
   "heroSubtitle": "¿Quieres soluciones intuitivas y llamativas para la optimización de tus procesos? Somos la mejor opción para hacer realidad tus sueños.🚀 Desarrollo de software a la medida para tus proyectos.",
   "ctaText": "Comenzar Proyecto",
@@ -22,26 +23,6 @@
       "title": "Posicionamiento SEO",
       "description": "Estrategias avanzadas para aparecer en los primeros resultados de Google, aumentando tu visibilidad y captación de clientes.",
       "icon": "TrendingUp"
-    }
-  ],
-  "caseStudies": [
-    {
-      "client": "Finanzas Tecnológicas S.A.",
-      "title": "Plataforma de Trading de Nueva Generación",
-      "description": "Construimos un panel de análisis de inversiones en tiempo real capaz de soportar millones de conexiones con sockets concurrentes diarios a latencia sub-milisegundo.",
-      "metric": "400% de Mejora en Tiempos de Carga"
-    },
-    {
-      "client": "Salud Inteligente Corporativa",
-      "title": "IA para Diagnóstico Integral del Paciente",
-      "description": "Integramos gigantes modelos de lenguaje en el antiguo y pesado sistema de historias médicas para extraer automáticamente diagnósticos de los reportes del sistema.",
-      "metric": "50h de Ahorro Administrativo Semanal"
-    },
-    {
-      "client": "Titanes del Comercio en Línea",
-      "title": "Infraestructura Logística Global",
-      "description": "Destruimos la arquitectura de monolitos antigua para diseñar una impecable e interminable fila infinita de servicios enfocados a la transaccionalidad.",
-      "metric": "99.99% Uptime Servidor"
     }
   ],
   "testimonials": [

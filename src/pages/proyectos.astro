@@ -6,6 +6,11 @@ import Testimonials from '../components/react/Testimonials.tsx';
 import Footer from '../components/Footer.astro';
 
 import homeData from '../content/landing/home.json';
+import projectsData from '../content/landing/projects.json';
+
+const caseStudies = [...projectsData.projects].sort(
+  (a, b) => (a.order ?? 999) - (b.order ?? 999)
+);
 
 const pageSchema = {
   '@type': 'CollectionPage',
@@ -35,7 +40,7 @@ const pageSchema = {
     </div>
 
     <!-- Reuse the component to render the cards inside the page body -->
-    <CaseStudies caseStudies={homeData.caseStudies} />
+    <CaseStudies caseStudies={caseStudies} whatsappPhone={homeData.whatsappPhone} />
 
     <!-- Testimonials Section -->
     <Testimonials client:visible testimonials={homeData.testimonials} />

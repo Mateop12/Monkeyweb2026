@@ -7,9 +7,16 @@ import Marquee from '../components/react/Marquee.tsx';
 import CaseStudies from '../components/CaseStudies.astro';
 import Testimonials from '../components/react/Testimonials.tsx';
 import Footer from '../components/Footer.astro';
+import AliadosSlider from '../components/react/AliadosSlider';
+import nosotrosData from '../content/landing/nosotros.json';
 
 // Import the CMS mock data directly
 import homeData from '../content/landing/home.json';
+import projectsData from '../content/landing/projects.json';
+
+const caseStudiesHome = [...projectsData.projects]
+  .sort((a, b) => (a.order ?? 999) - (b.order ?? 999))
+  .slice(0, 3);
 
 ---
 
@@ -30,14 +37,20 @@ import homeData from '../content/landing/home.json';
       ctaText={homeData.ctaText} 
     />
     
-    <ServicesPreview
+    <!-- <ServicesPreview
       client:visible
       services={homeData.services}
-    />
+    /> -->
     
     <Marquee client:visible />
 
-    <CaseStudies caseStudies={homeData.caseStudies} />
+    <CaseStudies
+      caseStudies={caseStudiesHome}
+      whatsappPhone={homeData.whatsappPhone}
+      moreProjectsHref="/proyectos"
+    />
+    <AliadosSlider client:load allies={nosotrosData.allies} />
+
 
     <Testimonials client:visible testimonials={homeData.testimonials} />
   </main>

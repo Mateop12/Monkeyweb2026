@@ -52,11 +52,34 @@
                   }
                 ]
               },
+            ]
+          }
+        ]
+      },
+      {
+        "name": "proyectos",
+        "label": "Proyectos (portafolio)",
+        "files": [
+          {
+            "name": "lista",
+            "label": "Casos de éxito y galerías",
+            "file": "src/content/landing/projects.json",
+            "fields": [
               {
-                "name": "caseStudies",
-                "label": "Casos de Éxito",
+                "name": "projects",
+                "label": "Proyectos",
                 "widget": "list",
                 "fields": [
+                  {
+                    "name": "id",
+                    "label": "ID único (slug)",
+                    "widget": "string"
+                  },
+                  {
+                    "name": "order",
+                    "label": "Orden (menor = primero)",
+                    "widget": "number"
+                  },
                   {
                     "name": "client",
                     "label": "Cliente",
@@ -64,18 +87,42 @@
                   },
                   {
                     "name": "title",
-                    "label": "Título del Proyecto",
+                    "label": "Título del proyecto",
                     "widget": "string"
                   },
                   {
                     "name": "description",
-                    "label": "Descripción",
+                    "label": "Descripción corta",
                     "widget": "text"
                   },
                   {
                     "name": "metric",
-                    "label": "Métrica Clave",
+                    "label": "Métrica destacada",
                     "widget": "string"
+                  },
+                  {
+                    "name": "functionalities",
+                    "label": "Funcionalidades (lista para el modal)",
+                    "widget": "list",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "label": "Funcionalidad",
+                        "widget": "string"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "images",
+                    "label": "Imágenes del carrusel",
+                    "widget": "list",
+                    "fields": [
+                      {
+                        "name": "src",
+                        "label": "Ruta pública (ej. /images/proyectos/mi-foto.webp)",
+                        "widget": "string"
+                      }
+                    ]
                   }
                 ]
               }

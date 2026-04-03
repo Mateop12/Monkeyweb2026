@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import homeData from '../../content/landing/home.json';
+
+const phone = (homeData as { whatsappPhone?: string }).whatsappPhone ?? '573000000000';
 
 export default function FloatingButtons() {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,8 +29,7 @@ export default function FloatingButtons() {
   };
 
   const whatsappMessage = "Hola! Estoy interesado en construir software a medida con Monkeymind.";
-  const whatsappNumber = "573000000000"; // Reemplazar con el número real
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappUrl = `https://wa.me/${phone.replace(/\D/g, '')}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <div className="fixed bottom-6 right-6 flex flex-col items-center gap-4 z-50">
