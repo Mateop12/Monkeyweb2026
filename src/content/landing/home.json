@@ -1,5 +1,5 @@
 {
-  "whatsappPhone": "573000000000",
+  "whatsappPhone": "573003238106",
   "heroTitle": "Construimos Software que Escala.",
   "heroSubtitle": "¿Quieres soluciones intuitivas y llamativas para la optimización de tus procesos? Somos la mejor opción para hacer realidad tus sueños.🚀 Desarrollo de software a la medida para tus proyectos.",
   "ctaText": "Comenzar Proyecto",
@@ -27,25 +27,18 @@
   ],
   "testimonials": [
     {
-      "content": "Monkeymind transformó por completo nuestra infraestructura corporativa. Su nivel de madurez técnica en desarrollo de software a medida y arquitecturas escalables nos permitió duplicar nuestro tráfico sin sufrir ningún problema de latencia.",
-      "name": "Andrea Giraldo",
-      "role": "Directora de Tecnología",
-      "company": "Finsystem Corp",
-      "initials": "AG"
+      "content": "Hemos transformado nuestra empresa de entrenamiento en alturas. Antes manejábamos todo manualmente y era un caos. Ahora, tenemos un sistema que cumple con la ley y nos facilita la gestión de cursos y certificados. Nuestra productividad ha aumentado y el proceso es mucho más eficiente",
+      "name": "Maria Camila Correa",
+      "role": "CEO ",
+      "company": "EnsiGestión SST",
+      "initials": "EG"
     },
     {
-      "content": "La atención al detalle en el desarrollo frontend es simplemente espectacular. Las interfaces reactivas y la velocidad de la aplicación nos ayudaron a mejorar nuestra retención de clientes en un 300% en el primer trimestre.",
-      "name": "Santiago Restrepo",
+      "content": "Nuestra empresa de cuadros dependía de Google Drive y era un desafío gestionar nuestras operaciones entre Colombia y Ecuador. Desde que implementamos su software a medida, todo ha mejorado. Ahora podemos manejar el inventario y los pedidos de manera eficiente, lo que nos ha permitido crecer y expandirnos más allá de Medellín",
+      "name": "Juan Restrepo",
       "role": "CEO & Fundador",
-      "company": "Elevate Logistics",
-      "initials": "SR"
-    },
-    {
-      "content": "Elegir a esta agencia en Medellín fue la mejor decisión para nuestro startup. Nos llevaron desde una idea cruda hasta un producto funcional integrado con IA que actualmente lidera en innovación en nuestro sector.",
-      "name": "Carolina Vélez",
-      "role": "Product Manager",
-      "company": "SmartData Health",
-      "initials": "CV"
+      "company": "DecorDesign",
+      "initials": "DD"
     }
   ]
 }

@@ -16,28 +16,33 @@
             "file": "src/content/landing/home.json",
             "fields": [
               {
+                "name": "whatsappPhone",
+                "label": "WhatsApp (solo números, ej. 573001234567)",
+                "widget": "string"
+              },
+              {
                 "name": "heroTitle",
-                "label": "Título Principal",
+                "label": "Título principal (hero)",
                 "widget": "string"
               },
               {
                 "name": "heroSubtitle",
-                "label": "Subtítulo Principal",
+                "label": "Subtítulo principal (hero)",
                 "widget": "text"
               },
               {
                 "name": "ctaText",
-                "label": "Texto Botón CTA",
+                "label": "Texto del botón CTA (hero)",
                 "widget": "string"
               },
               {
                 "name": "services",
-                "label": "Servicios",
+                "label": "Servicios (vista previa en home si lo activas)",
                 "widget": "list",
                 "fields": [
                   {
                     "name": "title",
-                    "label": "Título del Servicio",
+                    "label": "Título del servicio",
                     "widget": "string"
                   },
                   {
@@ -47,11 +52,49 @@
                   },
                   {
                     "name": "icon",
-                    "label": "Ícono (Lucide)",
-                    "widget": "string"
+                    "label": "Ícono Lucide",
+                    "widget": "select",
+                    "options": ["Code2", "Cloud", "Cpu", "Smartphone", "TrendingUp"]
                   }
                 ]
               },
+              {
+                "name": "testimonials",
+                "label": "Testimonios de clientes",
+                "widget": "list",
+                "fields": [
+                  {
+                    "name": "content",
+                    "label": "Cita / testimonio",
+                    "widget": "text"
+                  },
+                  {
+                    "name": "name",
+                    "label": "Nombre",
+                    "widget": "string"
+                  },
+                  {
+                    "name": "role",
+                    "label": "Cargo",
+                    "widget": "string"
+                  },
+                  {
+                    "name": "company",
+                    "label": "Empresa",
+                    "widget": "string"
+                  },
+                  {
+                    "name": "initials",
+                    "label": "Iniciales (avatar texto; si subes foto, puede quedar como respaldo)",
+                    "widget": "string"
+                  },
+                  {
+                    "name": "photo",
+                    "label": "Foto del cliente (opcional; sube a /images/…)",
+                    "widget": "image"
+                  }
+                ]
+              }
             ]
           }
         ]
@@ -72,7 +115,7 @@
                 "fields": [
                   {
                     "name": "id",
-                    "label": "ID único (slug)",
+                    "label": "ID único (slug, sin espacios)",
                     "widget": "string"
                   },
                   {
@@ -82,7 +125,7 @@
                   },
                   {
                     "name": "client",
-                    "label": "Cliente",
+                    "label": "Cliente / marca",
                     "widget": "string"
                   },
                   {
@@ -92,17 +135,17 @@
                   },
                   {
                     "name": "description",
-                    "label": "Descripción corta",
+                    "label": "Descripción corta (tarjeta)",
                     "widget": "text"
                   },
                   {
                     "name": "metric",
-                    "label": "Métrica destacada",
+                    "label": "Métrica o resultado destacado",
                     "widget": "string"
                   },
                   {
                     "name": "functionalities",
-                    "label": "Funcionalidades (lista para el modal)",
+                    "label": "Funcionalidades (lista en el modal)",
                     "widget": "list",
                     "fields": [
                       {
@@ -119,7 +162,12 @@
                     "fields": [
                       {
                         "name": "src",
-                        "label": "Ruta pública (ej. /images/proyectos/mi-foto.webp)",
+                        "label": "Imagen (sube a /images o pega ruta pública)",
+                        "widget": "image"
+                      },
+                      {
+                        "name": "alt",
+                        "label": "Texto alternativo (accesibilidad / SEO)",
                         "widget": "string"
                       }
                     ]
@@ -132,7 +180,7 @@
       },
       {
         "name": "paginas",
-        "label": "Otras Páginas",
+        "label": "Otras páginas",
         "files": [
           {
             "name": "nosotros",
@@ -141,18 +189,176 @@
             "fields": [
               {
                 "name": "title",
-                "label": "Título Principal",
+                "label": "Título principal (H1)",
                 "widget": "string"
               },
               {
+                "name": "intro",
+                "label": "Introducción (párrafo bajo el título)",
+                "widget": "text"
+              },
+              {
+                "name": "seoDescription",
+                "label": "Meta descripción (SEO)",
+                "widget": "text"
+              },
+              {
+                "name": "seoKeywords",
+                "label": "Meta keywords (SEO)",
+                "widget": "text"
+              },
+              {
+                "name": "statsSectionTitle",
+                "label": "Título bloque de estadísticas",
+                "widget": "string"
+              },
+              {
+                "name": "statsSectionSubtitle",
+                "label": "Subtítulo bloque de estadísticas",
+                "widget": "string"
+              },
+              {
+                "name": "stats",
+                "label": "Estadísticas (cifras editables)",
+                "widget": "list",
+                "fields": [
+                  {
+                    "name": "value",
+                    "label": "Valor (ej. 10+)",
+                    "widget": "string"
+                  },
+                  {
+                    "name": "label",
+                    "label": "Etiqueta corta",
+                    "widget": "string"
+                  },
+                  {
+                    "name": "hint",
+                    "label": "Descripción / ayuda bajo la cifra",
+                    "widget": "string"
+                  }
+                ]
+              },
+              {
                 "name": "mission",
-                "label": "Nuestra Misión",
+                "label": "Nuestra misión",
                 "widget": "text"
               },
               {
                 "name": "vision",
-                "label": "Nuestra Visión",
+                "label": "Nuestra visión",
                 "widget": "text"
+              },
+              {
+                "name": "whyChooseUs",
+                "label": "¿Por qué elegirnos? (acordeón)",
+                "widget": "object",
+                "fields": [
+                  {
+                    "name": "eyebrow",
+                    "label": "Etiqueta superior",
+                    "widget": "string"
+                  },
+                  {
+                    "name": "heading",
+                    "label": "Título principal",
+                    "widget": "string"
+                  },
+                  {
+                    "name": "items",
+                    "label": "Preguntas / respuestas",
+                    "widget": "list",
+                    "fields": [
+                      {
+                        "name": "title",
+                        "label": "Título del ítem",
+                        "widget": "string"
+                      },
+                      {
+                        "name": "body",
+                        "label": "Texto desplegable",
+                        "widget": "text"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "allies",
+                "label": "Clientes / aliados (logos en carrusel)",
+                "widget": "list",
+                "fields": [
+                  {
+                    "name": "name",
+                    "label": "Nombre (accesible / tooltip)",
+                    "widget": "string"
+                  },
+                  {
+                    "name": "image",
+                    "label": "Logo — ruta en public/ (ej. /aliados/marca.webp)",
+                    "widget": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "servicios",
+            "label": "Página Servicios (tarjetas)",
+            "file": "src/content/landing/servicios.json",
+            "fields": [
+              {
+                "name": "eyebrow",
+                "label": "Etiqueta superior (ej. Lo que ofrecemos)",
+                "widget": "string"
+              },
+              {
+                "name": "heading",
+                "label": "Título de la sección",
+                "widget": "string"
+              },
+              {
+                "name": "intro",
+                "label": "Texto introductorio bajo el título",
+                "widget": "text"
+              },
+              {
+                "name": "cards",
+                "label": "Tarjetas de servicio",
+                "widget": "list",
+                "fields": [
+                  {
+                    "name": "title",
+                    "label": "Título",
+                    "widget": "string"
+                  },
+                  {
+                    "name": "description",
+                    "label": "Descripción",
+                    "widget": "text"
+                  },
+                  {
+                    "name": "href",
+                    "label": "Enlace “Ver más” (ej. /contacto)",
+                    "widget": "string"
+                  },
+                  {
+                    "name": "ariaLabel",
+                    "label": "Etiqueta accesible del enlace",
+                    "widget": "string"
+                  },
+                  {
+                    "name": "icon",
+                    "label": "Ícono vectorial",
+                    "widget": "select",
+                    "options": ["code", "puzzle", "layers", "trend"]
+                  },
+                  {
+                    "name": "image",
+                    "label": "Imagen opcional (sustituye el ícono; sube o deja vacío)",
+                    "widget": "image"
+                  }
+                ]
               }
             ]
           },
@@ -172,8 +378,18 @@
                 "widget": "text"
               },
               {
+                "name": "seoDescription",
+                "label": "Meta descripción (SEO)",
+                "widget": "text"
+              },
+              {
+                "name": "seoKeywords",
+                "label": "Meta keywords (SEO)",
+                "widget": "text"
+              },
+              {
                 "name": "email",
-                "label": "Correo Electrónico",
+                "label": "Correo electrónico",
                 "widget": "string"
               },
               {

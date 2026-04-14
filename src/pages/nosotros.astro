@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import AboutStats from '../components/AboutStats.astro';
 import AliadosSlider from '../components/react/AliadosSlider';
+import WhyChooseUsAccordion from '../components/react/WhyChooseUsAccordion';
 
 import nosotrosData from '../content/landing/nosotros.json';
 
@@ -54,65 +55,15 @@ const pageSchema = {
       />
 
       <div
-        class="grid grid-cols-1 items-stretch gap-8 pt-2 md:grid-cols-2 md:gap-10 lg:gap-12"
+        class="bg-bg-main border-brand-beige/60 relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen border-y px-4 py-16 sm:px-6 sm:py-20 md:py-24 dark:border-brand-olive/30"
       >
-        <div
-          class="border-brand-beige bg-[var(--bg-card)] flex h-full flex-col gap-8 rounded-3xl border p-8 shadow-xl/5 sm:p-10 dark:border-brand-olive/40"
-        >
-          <div>
-            <h2
-              class="font-heading text-brand-turquoise bg-brand-turquoise/10 mb-4 inline-block rounded-full px-3 py-1 text-xl font-bold"
-            >
-              Misión
-            </h2>
-            <p class="text-brand-black/85 text-lg leading-relaxed">
-              {nosotrosData.mission}
-            </p>
-          </div>
-
-          <div class="bg-brand-beige/50 dark:bg-brand-olive/30 h-px w-full"></div>
-
-          <div>
-            <h2
-              class="font-heading text-brand-teal bg-brand-turquoise/10 mb-4 inline-block rounded-full px-3 py-1 text-xl font-bold"
-            >
-              Visión
-            </h2>
-            <p class="text-brand-black/85 text-lg leading-relaxed">
-              {nosotrosData.vision}
-            </p>
-          </div>
-        </div>
-
-        <div class="flex min-h-[380px] flex-col gap-4 sm:min-h-[420px] md:min-h-[520px]">
-          <div
-            class="border-brand-beige relative min-h-[220px] flex-1 overflow-hidden rounded-3xl border shadow-2xl sm:min-h-[240px] md:min-h-0"
-          >
-            <img
-              src="/equipomonkeymind.webp"
-              alt="Equipo Monkeymind trabajando en proyectos de software"
-              class="absolute inset-0 h-full w-full object-cover transition-all duration-700 grayscale hover:grayscale-0"
-              width="800"
-              height="600"
-              loading="eager"
-              decoding="async"
-            />
-            <div class="bg-brand-petroleum/10 absolute inset-0"></div>
-          </div>
-          <div
-            class="border-brand-turquoise/50 relative min-h-[220px] flex-1 overflow-hidden rounded-3xl border shadow-[0_20px_50px_rgba(11,93,94,0.3)] sm:min-h-[240px] md:min-h-0"
-          >
-            <img
-              src="/ideasmonkeymind.webp"
-              alt="Ideación y estrategia digital Monkeymind"
-              class="absolute inset-0 h-full w-full object-cover"
-              width="800"
-              height="600"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="bg-brand-turquoise/10 absolute inset-0"></div>
-          </div>
+        <div class="mx-auto max-w-4xl">
+          <WhyChooseUsAccordion
+            client:visible
+            eyebrow={nosotrosData.whyChooseUs.eyebrow}
+            heading={nosotrosData.whyChooseUs.heading}
+            items={nosotrosData.whyChooseUs.items}
+          />
         </div>
       </div>
 

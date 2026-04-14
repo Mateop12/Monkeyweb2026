@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Marquee() {
   return (
-    <div className="relative py-12 flex w-full overflow-hidden bg-bg-alt border-y border-brand-beige/50 -rotate-2 scale-110 my-16 z-20 shadow-2xl">
+    <div className="relative z-0 my-16 flex w-full -rotate-2 scale-110 overflow-hidden border-y border-brand-beige/50 bg-bg-alt py-12 shadow-2xl">
       <div 
         className="flex whitespace-nowrap animate-marquee items-center"
       >

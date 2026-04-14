@@ -1,0 +1,35 @@
+{
+  "eyebrow": "Lo que ofrecemos",
+  "heading": "Cuatro pilares para tu crecimiento digital",
+  "intro": "Diseño sobrio, alto contraste y microinteracciones; la misma calidad visual de tu marca, aplicada a cada servicio.",
+  "cards": [
+    {
+      "title": "Desarrollo Web",
+      "description": "Convierte tu idea en una web de alto impacto!. Creación de páginas informativas hasta plataformas avanzadas, garantizamos un diseño atractivo y una experiencia de usuario impecable. 🚀",
+      "href": "/contacto",
+      "ariaLabel": "Contactar por desarrollo web",
+      "icon": "code"
+    },
+    {
+      "title": "Proyectos Únicos",
+      "description": "Cada marca es especial, y tu proyecto también lo es! Creamos soluciones digitales personalizadas y diseñadas a la medida de tus necesidades asegurando innovación. ¡Dale vida a tu visión con nosotros! ✨",
+      "href": "/contacto",
+      "ariaLabel": "Contactar por proyectos únicos a medida",
+      "icon": "puzzle"
+    },
+    {
+      "title": "Aplicaciones Web",
+      "description": "Llevamos tu empresa al siguiente nivel! Desarrollamos desde sistemas de gestión hasta plataformas interactivas, escalables y seguras, pensadas para optimizar procesos y mejorar tiempos. 💻💡",
+      "href": "/contacto",
+      "ariaLabel": "Contactar por aplicaciones web",
+      "icon": "layers"
+    },
+    {
+      "title": "Posicionamiento",
+      "description": "¡Haz que te encuentren antes que a la competencia! Aparece en los primeros resultados de Google y atrae más clientes. Optimizamos tu web con estrategias avanzadas de SEO para aumentar tu visibilidad. 🚀📈",
+      "href": "/contacto",
+      "ariaLabel": "Contactar por posicionamiento SEO",
+      "icon": "trend"
+    }
+  ]
+}

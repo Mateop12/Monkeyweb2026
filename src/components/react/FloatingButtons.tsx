@@ -32,7 +32,13 @@ export default function FloatingButtons() {
   const whatsappUrl = `https://wa.me/${phone.replace(/\D/g, '')}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
-    <div className="fixed bottom-6 right-6 flex flex-col items-center gap-4 z-50">
+    <div
+      className="fixed z-50 flex flex-col items-center gap-3 sm:gap-4"
+      style={{
+        bottom: 'max(1rem, env(safe-area-inset-bottom, 0px))',
+        right: 'max(1rem, env(safe-area-inset-right, 0px))',
+      }}
+    >
       
       {/* Scroll To Top Button */}
       <AnimatePresence>

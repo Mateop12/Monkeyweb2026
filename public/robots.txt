@@ -1,0 +1,6 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Sitemap generado en build (Astro @astrojs/sitemap)
+Sitemap: https://monkeymind.co/sitemap-index.xml

@@ -1,66 +1,129 @@
 ---
 const currentYear = new Date().getFullYear();
+
+const navLinks = [
+  { href: '/', label: 'Inicio' },
+  { href: '/servicios', label: 'Servicios' },
+  { href: '/proyectos', label: 'Proyectos' },
+  { href: '/nosotros', label: 'Nosotros' },
+  { href: '/contacto', label: 'Contacto' },
+] as const;
 ---
 
 <footer
-  class="py-12 px-6 border-t border-brand-beige/50 glass relative z-10 bg-bg-main"
-  aria-label="Site footer"
+  class="border-brand-beige/70 relative z-10 mt-auto border-t bg-gradient-to-b from-brand-turquoise/[0.06] via-bg-alt to-bg-main px-5 pb-16 pt-14 sm:px-8 dark:from-brand-teal/15 dark:via-bg-alt dark:to-bg-main"
+  aria-label="Pie de página"
 >
-  <div
-    class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10"
-  >
-    <div class="flex items-center gap-3">
-      {/* Dynamic logos via CSS display toggling */}
-      <img
-        src="/logo-light.webp"
-        alt="Monkeymind Logo"
-        class="h-4 w-auto hidden dark:block opacity-90"
-      />
-      <img
-        src="/logo-dark.webp"
-        alt="Monkeymind Logo"
-        class="h-4 w-auto block dark:hidden opacity-90"
-      />
-      <span
-        class="font-heading font-medium text-brand-petroleum/80 text-sm border-l border-brand-beige pl-3"
-        >&copy; 2026</span
-      >
-    </div>
-
-    <nav
-      class="flex items-center gap-6"
-      aria-label="Navegación del Pie de Página"
+  <div class="relative z-10 mx-auto max-w-7xl">
+    <div
+      class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-start lg:gap-10 xl:gap-14"
     >
-      <a
-        href="#"
-        class="text-sm text-brand-black/60 hover:text-brand-turquoise transition-colors"
-        >Privacidad</a
+      <!-- Marca -->
+      <div
+        class="flex flex-col items-center gap-5 text-center lg:col-span-4 lg:items-start lg:text-left"
       >
-      <a
-        href="#"
-        class="text-sm text-brand-black/60 hover:text-brand-turquoise transition-colors"
-        >Términos</a
-      >
-      <a
-        href="#"
-        class="text-sm text-brand-black/60 hover:text-brand-turquoise transition-colors"
-        >Twitter</a
-      >
-      <a
-        href="#"
-        class="text-sm text-brand-black/60 hover:text-brand-turquoise transition-colors"
-        >LinkedIn</a
-      >
-    </nav>
+        <a href="/" class="inline-flex transition-opacity hover:opacity-90" aria-label="Monkeymind — inicio">
+          <img
+            src="/logo-light.webp"
+            alt=""
+            width="160"
+            height="40"
+            loading="lazy"
+            decoding="async"
+            class="hidden h-8 w-auto dark:block"
+          />
+          <img
+            src="/logo-dark.webp"
+            alt=""
+            width="160"
+            height="40"
+            loading="lazy"
+            decoding="async"
+            class="block h-8 w-auto dark:hidden"
+          />
+        </a>
+        <p class="text-brand-black/65 max-w-xs text-sm leading-relaxed">
+          Desarrollo de software 
+        </p>
+        <p class="text-brand-black/45 text-xs">
+          &copy; {currentYear} Monkeymind. Todos los derechos reservados.
+        </p>
+      </div>
 
-    <div class="text-xs text-brand-black/50 flex items-center gap-1">
-      Gestionado con <a
-        href="https://sitepins.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="hover:text-brand-turquoise transition-colors font-medium text-brand-black/70"
-        >Sitepins CMS</a
+      <!-- Enlaces -->
+      <nav
+        class="border-brand-beige/50 flex flex-col items-center gap-4 border-dashed pt-2 text-center lg:col-span-4 lg:items-start lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0 lg:text-left dark:border-brand-olive/25"
+        aria-label="Mapa del sitio"
       >
+        <span
+          class="text-brand-turquoise font-heading text-xs font-bold uppercase tracking-[0.2em]"
+          >Explorar</span
+        >
+        <ul
+          class="flex flex-wrap justify-center gap-x-6 gap-y-2.5 sm:gap-x-8 lg:flex-col lg:items-start lg:gap-2.5"
+        >
+          {
+            navLinks.map(({ href, label }) => (
+              <li>
+                <a
+                  href={href}
+                  class="text-brand-black/70 hover:text-brand-turquoise font-heading text-sm font-medium transition-colors"
+                >
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <!-- Contacto -->
+      <address
+        class="font-heading not-italic max-md:mx-auto max-md:w-full max-md:max-w-md max-md:pr-14 lg:col-span-4"
+      >
+        <div
+          class="border-brand-beige/80 bg-[var(--bg-card)]/90 flex flex-col gap-4 rounded-2xl border p-6 shadow-[0_12px_40px_-12px_rgba(6,43,34,0.12)] backdrop-blur-sm dark:border-brand-olive/35 dark:bg-[var(--bg-card)]/80 dark:shadow-none"
+        >
+          <span
+            class="text-brand-turquoise text-xs font-bold uppercase tracking-[0.2em]"
+            >Contacto</span
+          >
+          <p class="text-brand-petroleum font-heading text-lg font-bold leading-snug">
+            Medellín, Colombia
+          </p>
+          <div class="border-brand-beige/60 flex flex-col gap-3 border-t border-dashed pt-4 dark:border-brand-olive/30">
+            <a
+              href="mailto:info@monkeymindsoftware.com"
+              class="text-brand-black/80 hover:text-brand-turquoise group flex items-center gap-2 text-sm font-medium transition-colors"
+            >
+              <span
+                class="border-brand-turquoise/25 text-brand-turquoise flex h-9 w-9 shrink-0 items-center justify-center rounded-full border bg-brand-turquoise/5 transition-colors group-hover:border-brand-turquoise/50 group-hover:bg-brand-turquoise/10"
+                aria-hidden="true"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+              </span>
+              <span class="min-w-0 break-all text-left">info@monkeymindsoftware.com</span>
+            </a>
+            <a
+              href="tel:+573003238106"
+              class="text-brand-black/80 hover:text-brand-turquoise group flex items-center gap-2 text-sm font-medium transition-colors"
+            >
+              <span
+                class="border-brand-turquoise/25 text-brand-turquoise flex h-9 w-9 shrink-0 items-center justify-center rounded-full border bg-brand-turquoise/5 transition-colors group-hover:border-brand-turquoise/50 group-hover:bg-brand-turquoise/10"
+                aria-hidden="true"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </span>
+              <span>+57 300 323 8106</span>
+            </a>
+          </div>
+        </div>
+      </address>
     </div>
   </div>
 </footer>

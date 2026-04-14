@@ -1,14 +1,21 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-
 import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
-// Tailwind v4 vía postcss.config.mjs (@tailwindcss/postcss), no @tailwindcss/vite,
-// para evitar TypeError "Cannot read properties of undefined (reading 'call')" en Vite 7 + Astro.
+// Tailwind v4 vía postcss.config.mjs (@tailwindcss/postcss)
 export default defineConfig({
-  // URL pública del sitio (canonical, Open Graph). Cámbiala por tu dominio en producción.
+  // URL pública: canónicas, Open Graph y sitemap. Actualízala en producción.
   site: 'https://monkeymind.co',
 
-  integrations: [react()],
+  integrations: [
+    react(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'es',
+        locales: { es: 'es-CO' },
+      },
+    }),
+  ],
 });

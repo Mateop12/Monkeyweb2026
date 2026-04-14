@@ -25,7 +25,7 @@
       "client": "Ensigestión SST",
       "title": "Gestión de estudiantes",
       "description": "Creación de plataforma para la gestión de estudiantes, se logra sistematizar formatos fisicos a un ambiente digital, se logra mejoras en los procesos de la institución",
-      "metric": "100% de satisfacción del cliente",
+      "metric": "Sistematización de procesos",
       "functionalities": [
         "Gestión de estudiantes",
         "Gestión de profesores",
@@ -39,37 +39,17 @@
       ]
     },
     {
-      "id": "logistica-global",
+      "id": "AntioquiaGold",
       "order": 3,
-      "client": "Titanes del Comercio en Línea",
-      "title": "Infraestructura Logística Global",
-      "description": "Destruimos la arquitectura de monolitos antigua para diseñar una impecable e interminable fila infinita de servicios enfocados a la transaccionalidad.",
-      "metric": "99.99% Uptime Servidor",
+      "client": "AntioquiaGold",
+      "title": "Plataforma PQRSF",
+      "description": "Se logra la sistematización de proceso de la institución para la gestión de PQRSF y mejorar la atención al cliente",
+      "metric": "100% de casos resueltos",
       "functionalities": [
-        "Arquitectura de microservicios con despliegue continuo",
-        "Gestión de inventario y rutas en tiempo real multi-almacén",
-        "Integración con transportadoras y marketplaces",
-        "Colas de mensajes para picos de demanda y tolerancia a fallos",
-        "Paneles operativos y alertas proactivas ante incidencias"
-      ],
-      "images": [
-        { "src": "/images/proyectos/logistica-1.webp" },
-        { "src": "/images/proyectos/logistica-2.webp" }
-      ]
-    },
-    {
-      "id": "logistica-global",
-      "order": 3,
-      "client": "pingagols",
-      "title": "Infraestructura Logística Global",
-      "description": "Destruimos la arquitectura de monolitos antigua para diseñar una impecable e interminable fila infinita de servicios enfocados a la transaccionalidad.",
-      "metric": "99.99% Uptime Servidor",
-      "functionalities": [
-        "Arquitectura de microservicios con despliegue continuo",
-        "Gestión de inventario y rutas en tiempo real multi-almacén",
-        "Integración con transportadoras y marketplaces",
-        "Colas de mensajes para picos de demanda y tolerancia a fallos",
-        "Paneles operativos y alertas proactivas ante incidencias"
+        "Sistematización de PQRSF",
+        "Gestión de casos",
+        "Gestión de documentos",
+        "Aplicativo web rapido y funcional para la gestión de PQRSF"
       ],
       "images": [
         { "src": "/images/proyectos/logistica-1.webp" },

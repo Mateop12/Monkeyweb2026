@@ -5,20 +5,24 @@ import FloatingButtons from '../components/react/FloatingButtons.tsx';
 interface Props {
   title: string;
   description?: string;
+  /** Meta keywords: opcional; los buscadores modernos no la usan como factor principal. */
   keywords?: string;
-  /** Ruta absoluta o relativa al dominio, ej. /monkeymind.webp */
+  /** Ruta bajo public/, ej. /monkeymind.webp */
   image?: string;
+  /** Texto alternativo de la imagen para Open Graph / Twitter */
+  ogImageAlt?: string;
   ogType?: 'website' | 'article';
   noindex?: boolean;
-  /** Schema.org adicional (p. ej. AboutPage, ContactPage) — se fusiona en @graph */
+  /** Schema.org adicional (p. ej. AboutPage, ContactPage). Se fusiona con WebPage. */
   pageSchema?: Record<string, unknown>;
 }
 
 const {
   title,
   description = "Monkeymind | Agencia experta en desarrollo web frontend y desarrollo de software a medida en Colombia.",
-  keywords = "desarrollo web alto impacto, proyectos digitales a medida, aplicaciones web escalables, posicionamiento SEO avanzado, optimización Google, diseño UX, desarrollo web Medellín, desarrollo software Colombia",
+  keywords,
   image = "/monkeymind.webp",
+  ogImageAlt = "Monkeymind — desarrollo de software a medida en Colombia",
   ogType = 'website',
   noindex = false,
   pageSchema,
@@ -40,6 +44,7 @@ const absoluteImage = (() => {
 
 const siteBase = site ? new URL('/', site).href : `${new URL(canonicalURL).origin}/`;
 const organizationId = `${siteBase}#organization`;
+const websiteId = `${siteBase}#website`;
 
 const jsonLdGraph: Record<string, unknown>[] = [
   {
@@ -53,11 +58,18 @@ const jsonLdGraph: Record<string, unknown>[] = [
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Medellín',
+      addressRegion: 'Antioquia',
       addressCountry: 'CO',
     },
+    areaServed: [
+      { '@type': 'City', name: 'Medellín' },
+      { '@type': 'AdministrativeArea', name: 'Antioquia' },
+      { '@type': 'Country', name: 'Colombia' },
+    ],
   },
   {
     '@type': 'WebSite',
+    '@id': websiteId,
     name: 'Monkeymind',
     url: siteBase,
     publisher: { '@id': organizationId },
@@ -65,17 +77,33 @@ const jsonLdGraph: Record<string, unknown>[] = [
   },
 ];
 
-if (pageSchema) {
-  jsonLdGraph.push({
-    ...pageSchema,
-    url: (pageSchema.url as string) ?? canonicalURL,
-  });
+const pageTypes: string[] = ['WebPage'];
+const schemaType = pageSchema && typeof pageSchema['@type'] === 'string' ? pageSchema['@type'] : null;
+if (schemaType && !pageTypes.includes(schemaType)) {
+  pageTypes.push(schemaType);
 }
+
+const { '@type': _schemaTypeOmit, ...pageSchemaRest } = pageSchema ?? {};
+
+const webPageNode: Record<string, unknown> = {
+  ...pageSchemaRest,
+  '@type': pageTypes.length > 1 ? pageTypes : 'WebPage',
+  '@id': `${canonicalURL}#webpage`,
+  url: canonicalURL,
+  name: (pageSchemaRest.name as string | undefined) ?? title,
+  description: (pageSchemaRest.description as string | undefined) ?? description,
+  isPartOf: { '@id': websiteId },
+  inLanguage: 'es-CO',
+};
+
+jsonLdGraph.push(webPageNode);
 
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': jsonLdGraph,
 };
+
+const ogImageSecure = absoluteImage && absoluteImage.startsWith('https://') ? absoluteImage : undefined;
 ---
 
 <!doctype html>
@@ -83,16 +111,18 @@ const structuredData = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
-    <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="keywords" content={keywords} />
+    {keywords ? <meta name="keywords" content={keywords} /> : null}
     <meta name="author" content="Monkeymind" />
-    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="es-CO" href={canonicalURL} />
+    <link rel="alternate" hreflang="x-default" href={canonicalURL} />
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -101,16 +131,22 @@ const structuredData = {
     <meta property="og:site_name" content="Monkeymind" />
     <meta property="og:locale" content="es_CO" />
     {absoluteImage && <meta property="og:image" content={absoluteImage} />}
-    {absoluteImage && <meta property="og:image:alt" content="Monkeymind — desarrollo de software" />}
+    {ogImageSecure && <meta property="og:image:secure_url" content={ogImageSecure} />}
+    {absoluteImage && <meta property="og:image:type" content="image/webp" />}
+    {absoluteImage && <meta property="og:image:width" content="1200" />}
+    {absoluteImage && <meta property="og:image:height" content="630" />}
+    {absoluteImage && <meta property="og:image:alt" content={ogImageAlt} />}
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     {absoluteImage && <meta name="twitter:image" content={absoluteImage} />}
+    {absoluteImage && <meta name="twitter:image:alt" content={ogImageAlt} />}
 
     <meta name="theme-color" content="#062B22" />
+    <meta name="geo.region" content="CO-ANT" />
+    <meta name="geo.placename" content="Medellín" />
 
-    <!-- Google Fonts for typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -144,7 +180,6 @@ const structuredData = {
   <body
     class="font-sans antialiased text-brand-black min-h-screen flex flex-col selection:bg-brand-turquoise selection:text-white relative bg-bg-main overflow-x-hidden"
   >
-    <!-- Ambient glowing backgrounds for "premium" feel on light mode -->
     <div
       class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-bg-main"
     >
