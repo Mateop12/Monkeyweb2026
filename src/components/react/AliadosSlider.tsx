@@ -37,10 +37,13 @@ export default function AliadosSlider({ allies }: AliadosSliderProps) {
                 whileHover={{ scale: 1.2, y: -5 }}
                 className="flex-shrink-0 w-32 h-20 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500 group/item relative"
               >
-                <img 
-                  src={ally.image} 
-                  alt={ally.name} 
-                  className="max-w-full max-h-full object-contain mix-blend-multiply dark:mix-blend-normal opacity-60 group-hover/item:opacity-100 transition-opacity" 
+                <img
+                  src={ally.image}
+                  alt={`Logo de ${ally.name} — aliado y cliente de Monkeymind (desarrollo de software)`}
+                  title={`Aliado Estratégico: ${ally.name}`}
+                  className="max-w-full max-h-full object-contain mix-blend-multiply dark:mix-blend-normal opacity-60 group-hover/item:opacity-100 transition-opacity"
+                  loading="lazy"
+                  decoding="async"
                 />
                 
                 {/* Floating tooltips */}
@@ -58,10 +61,13 @@ export default function AliadosSlider({ allies }: AliadosSliderProps) {
                whileHover={{ scale: 1.2, y: -5 }}
                className="flex-shrink-0 w-32 h-20 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500 group/item relative"
              >
-               <img 
-                 src={ally.image} 
-                 alt={ally.name} 
-                 className="max-w-full max-h-full object-contain mix-blend-multiply dark:mix-blend-normal opacity-60 group-hover/item:opacity-100 transition-opacity" 
+               <img
+                 src={ally.image}
+                 alt={`Logo de ${ally.name} — aliado y cliente de Monkeymind (desarrollo de software)`}
+                 title={`Aliado Estratégico: ${ally.name}`}
+                 className="max-w-full max-h-full object-contain mix-blend-multiply dark:mix-blend-normal opacity-60 group-hover/item:opacity-100 transition-opacity"
+                 loading="lazy"
+                 decoding="async"
                />
                 <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1 bg-brand-petroleum text-white text-[10px] rounded-md opacity-0 group-hover/item:opacity-100 transition-all pointer-events-none shadow-lg whitespace-nowrap">
                   {ally.name}

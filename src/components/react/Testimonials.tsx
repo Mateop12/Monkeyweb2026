@@ -107,7 +107,8 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
                         {testimonials[currentIndex].photo?.trim() ? (
                           <img
                             src={testimonials[currentIndex].photo!.trim()}
-                            alt=""
+                            alt={`Retrato de ${testimonials[currentIndex].name}, ${testimonials[currentIndex].role} en ${testimonials[currentIndex].company} — testimonio Monkeymind`}
+                            title={`Testimonio de ${testimonials[currentIndex].name}`}
                             className="h-12 w-12 shrink-0 rounded-full border border-brand-beige/40 object-cover shadow-lg sm:h-14 sm:w-14"
                             loading="lazy"
                             decoding="async"

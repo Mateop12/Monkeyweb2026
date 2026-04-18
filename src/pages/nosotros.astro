@@ -1,20 +1,20 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import AboutStats from '../components/AboutStats.astro';
-import AliadosSlider from '../components/react/AliadosSlider';
-import WhyChooseUsAccordion from '../components/react/WhyChooseUsAccordion';
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import AboutStats from "../components/AboutStats.astro";
+import AliadosSlider from "../components/react/AliadosSlider";
+import WhyChooseUsAccordion from "../components/react/WhyChooseUsAccordion";
 
-import nosotrosData from '../content/landing/nosotros.json';
+import nosotrosData from "../content/landing/nosotros.json";
 
 const pageSchema = {
-  '@type': 'AboutPage',
+  "@type": "AboutPage",
   name: nosotrosData.title,
   description: nosotrosData.seoDescription,
   about: {
-    '@type': 'Organization',
-    name: 'Monkeymind',
+    "@type": "Organization",
+    name: "Monkeymind",
   },
 };
 ---
@@ -23,30 +23,45 @@ const pageSchema = {
   title={`${nosotrosData.title} | Monkeymind`}
   description={nosotrosData.seoDescription}
   keywords={nosotrosData.seoKeywords}
-  image="/equipomonkeymind.webp"
+  image="/monkeymind1.webp"
   pageSchema={pageSchema}
 >
   <Navbar />
 
   <main class="flex flex-col pt-28 pb-20 sm:pt-32 sm:pb-24">
-    <div class="mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 sm:px-6 lg:gap-16">
-      <header class="animate-[fade-in-up_0.8s_ease-out_forwards]">
-        <p
-          class="text-brand-turquoise mb-3 text-xs font-semibold uppercase tracking-[0.2em] sm:text-sm"
-        >
-          Quiénes somos
-        </p>
-        <h1
-          class="font-heading text-brand-petroleum max-w-4xl text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl"
-        >
-          {nosotrosData.title}
-        </h1>
-        <p
-          class="text-brand-black/70 mt-5 max-w-2xl text-base leading-relaxed sm:text-lg"
-        >
-          {nosotrosData.intro}
-        </p>
-      </header>
+    <div
+      class="mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 sm:px-6 lg:gap-16"
+    >
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <header class="animate-[fade-in-up_0.8s_ease-out_forwards]">
+          <p
+            class="text-brand-turquoise mb-3 text-xs font-semibold uppercase tracking-[0.2em] sm:text-sm"
+          >
+            Quiénes somos
+          </p>
+          <h1
+            class="font-heading text-brand-petroleum text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl"
+          >
+            {nosotrosData.title}
+          </h1>
+          <p
+            class="text-brand-black/70 mt-5 text-base leading-relaxed sm:text-lg"
+          >
+            {nosotrosData.intro}
+          </p>
+        </header>
+
+        <!-- Imagen representativa de Nosotros -->
+        <div class="w-full relative overflow-hidden rounded-3xl shadow-2xl aspect-square md:aspect-[4/3] lg:aspect-[6/5] animate-[fade-in-up_0.8s_ease-out_0.2s_forwards] opacity-0">
+          <img 
+            src="/equipomonkeymind.webp" 
+            alt="El equipo de Monkeymind trabajando" 
+            title="El equipo de Monkeymind desarrollando software a medida"
+            class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105 z-10"
+          />
+          <div class="absolute inset-0 bg-brand-turquoise/5 mix-blend-multiply z-20 pointer-events-none"></div>
+        </div>
+      </div>
 
       <AboutStats
         sectionTitle={nosotrosData.statsSectionTitle}

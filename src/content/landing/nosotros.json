@@ -1,8 +1,8 @@
 {
-  "title": "Sobre Monkeymind",
-  "intro": "Somos un equipo apasionado por la innovación y la tecnología. Nos especializamos en transformar tus ideas en soluciones digitales reales y funcionales. Plasmamos tu visión en desarrollos a medida, creando aplicaciones, plataformas y sistemas que no solo cumplen con tus expectativas, sino que las superan.",
-  "seoDescription": "Conoce la misión, visión e impacto de Monkeymind: desarrollo de software a medida, proyectos digitales y alianzas en Medellín y Colombia.",
-  "seoKeywords": "Monkeymind, agencia desarrollo software Medellín, desarrollo web Colombia, desarrollo de software a medida, software a medida, equipo tecnológico, casos de éxito",
+  "title": "Desarrollo de Software y Web en Medellín",
+  "intro": "Somos un equipo apasionado por la innovación y la tecnología en Colombia. Nos especializamos en transformar tus ideas en soluciones digitales reales y funcionales. Plasmamos tu visión en desarrollos a medida, creando aplicaciones, plataformas y sistemas que no solo cumplen con tus expectativas, sino que las superan.",
+  "seoDescription": "Conoce a Monkeymind, agencia líder en desarrollo y consultoría de software en Medellín. Especialistas en aplicaciones web y SEO en páginas web. soluciones tecnológicas a medida para tu empres",
+  "seoKeywords": "agencia de desarrollo de software, consultoría de software, seo en páginas web, empresa desarrollo software Medellín, agencia desarrollo web Colombia",
   "statsSectionTitle": "Impacto en proyectos",
   "statsSectionSubtitle": "Cifras que reflejan el trabajo conjunto con equipos y empresas.",
   "stats": [
@@ -48,10 +48,25 @@
     ]
   },
   "allies": [
-    { "name": "Ensi Gestión", "image": "/aliados/ensigestionlogo.webp" },
-    { "name": "Ascenso", "image": "/aliados/ascenso.webp" },
-    { "name": "Cooappyme", "image": "/aliados/cooappyme.webp" },
-    { "name": "Decor Design", "image": "/aliados/decordesign.avif" },
-    { "name": "SIA Colombia", "image": "/aliados/siacolombia.webp" }
+    {
+      "name": "Ensi Gestión",
+      "image": "/aliados/ensigestionlogo.webp"
+    },
+    {
+      "name": "Ascenso",
+      "image": "/aliados/ascenso.webp"
+    },
+    {
+      "name": "Cooappyme",
+      "image": "/aliados/cooappyme.webp"
+    },
+    {
+      "name": "Decor Design",
+      "image": "/aliados/decordesign.avif"
+    },
+    {
+      "name": "SIA Colombia",
+      "image": "/aliados/siacolombia.webp"
+    }
   ]
 }

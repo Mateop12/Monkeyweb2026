@@ -1,17 +1,18 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-const FALLBACK = ['/monkeymind1.webp'];
+export type CarouselSlide = { src: string; alt: string };
 
 interface Props {
-  images: string[];
+  slides: CarouselSlide[];
+  /** Título del proyecto (aria-label del carrusel). */
   title: string;
 }
 
-export default function ProjectCarousel({ images, title }: Props) {
-  const slides = images?.length ? images : FALLBACK;
+export default function ProjectCarousel({ slides, title }: Props) {
+  const list = slides?.length ? slides : [{ src: '/monkeymind1.webp', alt: `Proyecto «${title}» — Monkeymind` }];
   const [index, setIndex] = useState(0);
 
-  const n = slides.length;
+  const n = list.length;
   const go = useCallback(
     (delta: number) => {
       setIndex((i) => (i + delta + n) % n);
@@ -21,7 +22,7 @@ export default function ProjectCarousel({ images, title }: Props) {
 
   useEffect(() => {
     setIndex(0);
-  }, [images.join('|')]);
+  }, [list.map((s) => s.src).join('|')]);
 
   useEffect(() => {
     if (n <= 1) return;
@@ -34,7 +35,7 @@ export default function ProjectCarousel({ images, title }: Props) {
       className="border-brand-beige/50 relative h-48 w-full overflow-hidden border-b dark:border-brand-olive/30"
       role="region"
       aria-roledescription="carrusel"
-      aria-label={`Galería del proyecto ${title}`}
+      aria-label={`Galería de imágenes del proyecto ${title}`}
     >
       <div
         className="flex h-full transition-transform duration-500 ease-out [@media(prefers-reduced-motion:reduce)]:transition-none"
@@ -43,15 +44,16 @@ export default function ProjectCarousel({ images, title }: Props) {
           transform: `translateX(-${(index * 100) / n}%)`,
         }}
       >
-        {slides.map((src, i) => (
+        {list.map((slide, i) => (
           <div
-            key={`${src}-${i}`}
+            key={`${slide.src}-${i}`}
             className="relative h-full shrink-0"
             style={{ width: `${100 / n}%` }}
           >
             <img
-              src={src}
-              alt={`${title} — imagen ${i + 1} de ${n}`}
+              src={slide.src}
+              alt={slide.alt}
+              title={slide.alt}
               className="h-full w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
               loading={i === 0 ? 'eager' : 'lazy'}
               decoding="async"
@@ -64,14 +66,14 @@ export default function ProjectCarousel({ images, title }: Props) {
       {n > 1 ? (
         <>
           <div className="pointer-events-none absolute inset-x-0 bottom-2 flex justify-center gap-1.5">
-            {slides.map((_, i) => (
+            {list.map((_, i) => (
               <button
                 key={i}
                 type="button"
                 className={`pointer-events-auto h-1.5 rounded-full transition-all ${
                   i === index ? 'bg-white w-6 shadow-sm' : 'w-1.5 bg-white/50 hover:bg-white/80'
                 }`}
-                aria-label={`Ir a imagen ${i + 1}`}
+                aria-label={`Ir a imagen ${i + 1} de ${n}`}
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();

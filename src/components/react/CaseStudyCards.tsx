@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import ProjectCarousel from './ProjectCarousel';
+import ProjectCarousel, { type CarouselSlide } from './ProjectCarousel';
 
-/** Rutas en `public/` (p. ej. /images/proyectos/...). Sitepins puede guardar `{ src }` por ítem. */
-export type ProjectImage = string | { src: string };
+/** Rutas en `public/` (p. ej. /images/proyectos/...). Sitepins puede guardar `{ src, alt? }` por ítem. */
+export type ProjectImage = string | { src: string; alt?: string };
 
 export interface CaseStudy {
   id?: string;
@@ -18,11 +18,48 @@ export interface CaseStudy {
   images: ProjectImage[];
 }
 
-function imageUrls(images: ProjectImage[]): string[] {
-  if (!images?.length) return [];
-  return images
-    .map((x) => (typeof x === 'string' ? x : x?.src))
-    .filter((u): u is string => Boolean(u));
+const FALLBACK_CAROUSEL_SRC = '/monkeymind1.webp';
+
+/** Construye diapositivas con alt descriptivo para SEO y accesibilidad. */
+export function normalizeProjectSlides(
+  images: ProjectImage[],
+  title: string,
+  client: string
+): CarouselSlide[] {
+  type Parsed = { src: string; alt?: string };
+  const parsed: Parsed[] = (images ?? [])
+    .map((x): Parsed | null => {
+      if (typeof x === 'string') {
+        const src = x.trim();
+        return src ? { src } : null;
+      }
+      if (x && typeof x === 'object' && typeof (x as { src?: string }).src === 'string') {
+        const o = x as { src: string; alt?: string };
+        const src = o.src.trim();
+        if (!src) return null;
+        const altFromCms = typeof o.alt === 'string' ? o.alt.trim() : '';
+        return { src, alt: altFromCms || undefined };
+      }
+      return null;
+    })
+    .filter((x): x is Parsed => x !== null);
+
+  const n = parsed.length;
+  if (n === 0) {
+    return [
+      {
+        src: FALLBACK_CAROUSEL_SRC,
+        alt: `Vista ilustrativa del proyecto «${title}» para ${client} — desarrollo Monkeymind, Colombia.`,
+      },
+    ];
+  }
+
+  return parsed.map((item, i) => ({
+    src: item.src,
+    alt:
+      item.alt ||
+      `${client} — «${title}»: captura ${i + 1} de ${n}. Caso de éxito desarrollado por Monkeymind.`,
+  }));
 }
 
 /** Acepta string[] o listas guardadas por Sitepins como { value } / { item }. */
@@ -101,7 +138,10 @@ export default function CaseStudyCards({ caseStudies, whatsappPhone, moreProject
             >
               <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-brand-turquoise/10 via-transparent to-transparent" />
 
-              <ProjectCarousel images={imageUrls(study.images)} title={study.title} />
+              <ProjectCarousel
+                slides={normalizeProjectSlides(study.images, study.title, study.client)}
+                title={study.title}
+              />
 
               <div className="relative z-10 flex flex-grow flex-col bg-white p-8 dark:bg-bg-alt">
                 <span className="text-brand-caramel mb-3 block text-xs font-semibold uppercase">{study.client}</span>

@@ -48,17 +48,22 @@ const websiteId = `${siteBase}#website`;
 
 const jsonLdGraph: Record<string, unknown>[] = [
   {
-    '@type': 'Organization',
+    '@type': ['Organization', 'ProfessionalService'],
     '@id': organizationId,
     name: 'Monkeymind',
+    alternateName: 'Monkeymind Software',
     url: siteBase,
     logo: site ? new URL('/logo-dark.webp', site).href : undefined,
+    image: site ? new URL('/monkeymind.webp', site).href : undefined,
     description:
-      'Desarrollo de software a medida, aplicaciones web y estrategia digital en Colombia.',
+      'Agencia de desarrollo de software a medida, aplicaciones web, plataformas escalables y posicionamiento SEO en Medellín y Colombia.',
+    foundingDate: '2022',
     address: {
       '@type': 'PostalAddress',
+      streetAddress: 'Medellín, Antioquia',
       addressLocality: 'Medellín',
       addressRegion: 'Antioquia',
+      postalCode: '050001',
       addressCountry: 'CO',
     },
     areaServed: [
@@ -66,14 +71,42 @@ const jsonLdGraph: Record<string, unknown>[] = [
       { '@type': 'AdministrativeArea', name: 'Antioquia' },
       { '@type': 'Country', name: 'Colombia' },
     ],
+    serviceType: [
+      'Desarrollo de software a medida',
+      'Agencia de desarrollo de software',
+      'Consultoría de software',
+      'Desarrollo web',
+      'Aplicaciones web',
+      'Posicionamiento SEO',
+      'SEO en páginas web',
+    ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+57-300-323-8106',
+      contactType: 'sales',
+      areaServed: 'CO',
+      availableLanguage: 'Spanish',
+    },
+    sameAs: [
+      'https://www.linkedin.com/company/monkeymindsoftware',
+      'https://www.instagram.com/monkeymindsoftware',
+    ],
   },
   {
     '@type': 'WebSite',
     '@id': websiteId,
-    name: 'Monkeymind',
+    name: 'Monkeymind — Desarrollo de Software Medellín',
     url: siteBase,
     publisher: { '@id': organizationId },
     inLanguage: 'es-CO',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${siteBase}proyectos?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
   },
 ];
 
@@ -123,6 +156,16 @@ const ogImageSecure = absoluteImage && absoluteImage.startsWith('https://') ? ab
     <link rel="canonical" href={canonicalURL} />
     <link rel="alternate" hreflang="es-CO" href={canonicalURL} />
     <link rel="alternate" hreflang="x-default" href={canonicalURL} />
+    {
+      site ? (
+        <link
+          rel="sitemap"
+          type="application/xml"
+          title="Sitemap"
+          href={new URL('sitemap-index.xml', site).href}
+        />
+      ) : null
+    }
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -138,6 +181,8 @@ const ogImageSecure = absoluteImage && absoluteImage.startsWith('https://') ? ab
     {absoluteImage && <meta property="og:image:alt" content={ogImageAlt} />}
 
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@monkeymind" />
+    <meta name="twitter:creator" content="@monkeymind" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     {absoluteImage && <meta name="twitter:image" content={absoluteImage} />}
@@ -149,8 +194,10 @@ const ogImageSecure = absoluteImage && absoluteImage.startsWith('https://') ? ab
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
 

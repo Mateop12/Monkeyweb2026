@@ -1,48 +1,48 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import HeroReact from '../components/react/Hero.tsx';
-import ServicesPreview from '../components/react/ServicesPreview.tsx';
-import Marquee from '../components/react/Marquee.tsx';
-import CaseStudies from '../components/CaseStudies.astro';
-import Testimonials from '../components/react/Testimonials.tsx';
-import Footer from '../components/Footer.astro';
-import AliadosSlider from '../components/react/AliadosSlider';
-import nosotrosData from '../content/landing/nosotros.json';
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import HeroReact from "../components/react/Hero.tsx";
+import ServicesPreview from "../components/react/ServicesPreview.tsx";
+import Marquee from "../components/react/Marquee.tsx";
+import CaseStudies from "../components/CaseStudies.astro";
+import Testimonials from "../components/react/Testimonials.tsx";
+import Footer from "../components/Footer.astro";
+import AliadosSlider from "../components/react/AliadosSlider";
+
+import nosotrosData from "../content/landing/nosotros.json";
 
 // Import the CMS mock data directly
-import homeData from '../content/landing/home.json';
-import projectsData from '../content/landing/projects.json';
+import homeData from "../content/landing/home.json";
+import projectsData from "../content/landing/projects.json";
 
 const caseStudiesHome = [...projectsData.projects]
   .sort((a, b) => (a.order ?? 999) - (b.order ?? 999))
   .slice(0, 3);
-
 ---
 
 <Layout
-  title="Monkeymind | Desarrollo de Software a Medida Colombia - Medellín"
-  description="Expertos en desarrollo web frontend y desarrollo de software a medida en Colombia — Medellín. Arquitecturas web escalables, apps y posicionamiento SEO."
-  keywords="Monkeymind, desarrollo software Medellín, desarrollo web Colombia, software a medida, aplicaciones web, SEO Colombia, agencia desarrollo"
+  title="Desarrollo de Software a Medida en Medellín | Monkeymind"
+  description="Agencia de desarrollo y consultoría de software en Medellín y Colombia. Creamos aplicaciones web, plataformas escalables y ofrecemos SEO y desarrollo full stack. ¡Cotiza gratis! ¡Transforma tu visión en realidad! Contáctanos"
+  keywords="agencia de desarrollo de software, consultoría de software, seo en páginas web, desarrollo de software Medellín, agencia desarrollo web Colombia, software a medida Colombia, aplicaciones web Medellín, soluciones tecnológicas a medida para tu empresa, Paginas web Medellín, desarrollo  y programación de paginas web, posicionamiento web, desarrollo full stack, seo y sem"
   image="/monkeymind.webp"
-  ogImageAlt="Monkeymind — agencia de desarrollo de software en Medellín y Colombia"
+  ogImageAlt="Monkeymind — agencia de desarrollo de software a medida en Medellín, Colombia"
 >
   <Navbar />
-  
+
   <main class="flex flex-col">
     <!-- Pass CMS data to React components with client:load for animations -->
-    <HeroReact 
+    <HeroReact
       client:load
-      title={homeData.heroTitle} 
-      subtitle={homeData.heroSubtitle} 
-      ctaText={homeData.ctaText} 
+      title={homeData.heroTitle}
+      subtitle={homeData.heroSubtitle}
+      ctaText={homeData.ctaText}
     />
-    
+
     <!-- <ServicesPreview
       client:visible
       services={homeData.services}
     /> -->
-    
+
     <Marquee client:visible />
 
     <CaseStudies
@@ -51,7 +51,6 @@ const caseStudiesHome = [...projectsData.projects]
       moreProjectsHref="/proyectos"
     />
     <AliadosSlider client:load allies={nosotrosData.allies} />
-
 
     <Testimonials client:visible testimonials={homeData.testimonials} />
   </main>

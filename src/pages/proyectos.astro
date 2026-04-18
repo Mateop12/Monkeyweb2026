@@ -1,46 +1,59 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import CaseStudies from '../components/CaseStudies.astro';
-import Testimonials from '../components/react/Testimonials.tsx';
-import Footer from '../components/Footer.astro';
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import CaseStudies from "../components/CaseStudies.astro";
+import Testimonials from "../components/react/Testimonials.tsx";
+import Footer from "../components/Footer.astro";
+import FeaturedBannerSlider from "../components/react/FeaturedBannerSlider";
 
-import homeData from '../content/landing/home.json';
-import projectsData from '../content/landing/projects.json';
+import homeData from "../content/landing/home.json";
+import projectsData from "../content/landing/projects.json";
 
 const caseStudies = [...projectsData.projects].sort(
-  (a, b) => (a.order ?? 999) - (b.order ?? 999)
+  (a, b) => (a.order ?? 999) - (b.order ?? 999),
 );
 
 const pageSchema = {
-  '@type': 'CollectionPage',
-  name: 'Casos de éxito | Monkeymind',
+  "@type": "CollectionPage",
+  name: "Casos de éxito | Monkeymind",
   description:
-    'Casos de éxito y proyectos de desarrollo de software, plataformas web y aplicaciones a medida realizados por Monkeymind.',
+    "Casos de éxito y proyectos de desarrollo de software, plataformas web y aplicaciones a medida realizados por Monkeymind.",
 };
 ---
 
 <Layout
-  title="Monkeymind | Casos de Éxito y Proyectos"
-  description="Casos de éxito: proyectos de desarrollo web, plataformas escalables y software a medida. Testimonios de clientes y resultados medibles."
-  keywords="casos éxito desarrollo software, proyectos web Medellín, portafolio software Colombia, testimonios Monkeymind"
+  title="Casos de Éxito en Desarrollo de Software y Web | Monkeymind"
+  description="Explora nuestro portafolio de proyectos en Colombia. Desarrollo de software a medida, plataformas web escalables y casos de éxito reales. ¡Mirá nuestros resultados! ¡Transforma tu visión en realidad! Contáctanos"
+  keywords="casos de éxito desarrollo software, portafolio desarrollo web Medellín, proyectos software a medida Colombia, Monkeymind portafolio, ejemplos aplicaciones web, desarrollo full stack, seo y sem, posicionamiento web, desarrollo y programación de paginas web"
   image="/ideasmonkeymind.webp"
   pageSchema={pageSchema}
 >
   <Navbar />
-  
+
   <main class="flex flex-col pt-20">
     <div class="px-6 py-16 text-center max-w-3xl mx-auto">
-      <h1 class="text-5xl md:text-6xl font-heading font-extrabold text-brand-petroleum mb-6 animate-[fade-in-up_0.8s_ease-out_forwards]">
+      <h1
+        class="text-5xl md:text-6xl font-heading font-extrabold text-brand-petroleum mb-6 animate-[fade-in-up_0.8s_ease-out_forwards]"
+      >
         Casos de Éxito
       </h1>
-      <p class="text-brand-black/70 text-lg animate-[fade-in-up_0.8s_ease-out_0.2s_forwards] opacity-0">
-        Descubre cómo hemos ayudado a empresas líderes a transformar sus operaciones mediante arquitectura de software de alta disponibilidad y diseño impecable.
+      <p
+        class="text-brand-black/70 text-lg animate-[fade-in-up_0.8s_ease-out_0.2s_forwards] opacity-0"
+      >
+        Descubre cómo hemos ayudado a empresas líderes a transformar sus
+        operaciones mediante arquitectura de software de alta disponibilidad y
+        diseño impecable.
       </p>
     </div>
 
     <!-- Reuse the component to render the cards inside the page body -->
-    <CaseStudies caseStudies={caseStudies} whatsappPhone={homeData.whatsappPhone} />
+    <CaseStudies
+      caseStudies={caseStudies}
+      whatsappPhone={homeData.whatsappPhone}
+    />
+
+    <!-- ── Slider de Proyectos Destacados ── -->
+    <FeaturedBannerSlider client:visible />
 
     <!-- Testimonials Section -->
     <Testimonials client:visible testimonials={homeData.testimonials} />

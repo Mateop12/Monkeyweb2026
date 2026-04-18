@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 
 interface HeroProps {
   title: string;
@@ -23,7 +23,7 @@ export default function Hero({ title, subtitle, ctaText }: HeroProps) {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
@@ -102,8 +102,12 @@ export default function Hero({ title, subtitle, ctaText }: HeroProps) {
 
             <img
               src="/monkeymind.webp"
-              alt="Monkeymind Tech Overview"
+              alt="Monkeymind — ilustración de marca: desarrollo de software a medida, aplicaciones web y soluciones digitales en Colombia"
+              title="Monkeymind: Expertos en Desarrollo de Software a Medida"
               className="relative z-10 w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(6,43,34,0.3)] animate-[float_6s_ease-in-out_infinite]"
+              width={500}
+              height={500}
+              decoding="async"
             />
           </div>
         </motion.div>
